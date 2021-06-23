@@ -1,0 +1,19 @@
+{
+  "filter": {
+    "users": "Users",
+    "devices": "Devices",
+    "taskType": "Task types",
+    "status": "Status",
+    "date": "",
+    "criticality": "By criticality",
+    "all": "All",
+    "vulnerabilities": "Vulnerabilities",
+    "settings": "Settings",
+    "groupIS": "Sec group",
+    "groupIT": "IT group",
+    "dateStart": "From",
+    "dateEnd": "To",
+    "open": "Opened",
+    "closed": "Closed"
+  }
+}

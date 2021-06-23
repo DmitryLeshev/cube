@@ -1,0 +1,30 @@
+{
+  "purpose-of-dictionaries": {
+    "supporting-rainbow-tables": "Rainbow tables",
+    "protocols": "Protocols",
+    "logins": "Logins",
+    "passwords": "Passwords",
+    "add": "Add",
+    "authorization-points-found": "Detected auth points",
+    "devices": "Devices",
+    "status": "Status",
+    "statuses": {
+      "authorization-point-found": "Auth point is detected",
+      "logins-expected": "Need enter logins",
+      "access-point-ready-to-iterate": "Auth point is ready to bruteforce",
+      "enumeration-is-performed": "Bruteforce"
+    }
+  },
+  "dict": {
+    "cols": {
+      "default": "Default dictionaries",
+      "generated": "Generated dictionaries",
+      "users": "User dictionaries"
+    },
+    "select-a-file": "Choose file",
+    "add-dictionaries": "Add dictionary",
+    "max-size": "Max file size is 1 GB",
+    "dictionary-name": "Dictionary name",
+    "formed": "Preparing for usage"
+  }
+}

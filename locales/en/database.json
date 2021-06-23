@@ -1,0 +1,15 @@
+{
+  "search": {
+    "placeholder": "Search",
+    "helper": "Program name, version, cpe"
+  },
+  "versions": {
+    "search": "Поиск по",
+    "maximum": "Max score",
+    "quantity": "Vulnerables"
+  },
+  "softs": {
+    "publisher": "Publisher",
+    "program": "Program"
+  }
+}

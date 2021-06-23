@@ -1,0 +1,19 @@
+{
+  "filter": {
+    "users": "Пользователи",
+    "devices": "Устройства",
+    "taskType": "Тип задач",
+    "status": "Статус",
+    "date": "",
+    "criticality": "По критичности",
+    "all": "Все",
+    "vulnerabilities": "Уязвимости",
+    "settings": "Настройки",
+    "groupIS": "Группа ИБ",
+    "groupIT": "Группа ИТ",
+    "dateStart": "С",
+    "dateEnd": "По",
+    "open": "Открытые",
+    "closed": "Закрытые"
+  }
+}
