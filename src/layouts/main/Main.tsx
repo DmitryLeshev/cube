@@ -37,12 +37,12 @@ const useStyles = makeStyles((theme: ITheme) =>
       width: `calc(100% - ${theme.drawer.closeWidth}px)`,
       marginLeft: theme.drawer.closeWidth,
       background: theme.palette.background.default,
-      transition: 'all 0.3s',
+      transition: theme.drawer.transition,
+      overflow: 'auto',
     },
     mainShift: {
       width: `calc(100% - ${theme.drawer.openWidth}px)`,
       marginLeft: theme.drawer.openWidth,
-      transition: 'all 0.3s',
       [theme.breakpoints.down('sm')]: {
         width: '100%',
         marginLeft: 0,

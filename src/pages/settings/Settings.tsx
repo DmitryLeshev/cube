@@ -1,22 +1,43 @@
 import React, { memo } from 'react';
 import { renderRoutes } from 'react-router-config';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import { createStyles, makeStyles } from '@material-ui/core';
+
+import { Page } from '@/components';
+import { ITheme } from '@/types/theme';
+
+import { Reboot, Reset, Update } from './components';
 
 interface Props {
   route: any;
 }
 
 export default memo(function Settings({ route }: Props) {
+  const { t } = useTranslation();
+  const classes = useStyles();
   return (
-    <div>
-      <h1>Settings</h1>
-      <div>
-        Tabs
-        <Link to={`/settings/system`}>system</Link>
-        <Link to={`/settings/devices`}>devices</Link>
-        <Link to={`/settings/white-list`}>white-list</Link>
+    <Page title={t('settings:page')}>
+      <div className={classes.template}>
+        <Update />
+        <Reboot />
+        <Reset />
       </div>
-      <div>{renderRoutes(route.routes)}</div>
-    </div>
+      {renderRoutes(route.routes)}
+    </Page>
   );
 });
+
+const useStyles = makeStyles((theme: ITheme) =>
+  createStyles({
+    template: {
+      display: 'grid',
+      padding: theme.spacing(1.5, 3),
+      gridTemplateAreas: `
+        "update update"
+        "reboot reset"
+      `,
+      gap: theme.spacing(3),
+    },
+  }),
+);

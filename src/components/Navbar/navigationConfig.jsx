@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import HomeIcon from '@material-ui/icons/Home';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -65,7 +65,7 @@ const navigationConfig = [
       {
         i18nkey: 'settings',
         title: 'Настройки',
-        href: '/settings/system',
+        href: '/settings',
         icon: SettingsIcon,
       },
     ],

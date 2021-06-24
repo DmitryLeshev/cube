@@ -24,7 +24,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { useTypedSelector, useActions } from '../../hooks';
 
 import { ITheme } from '../../types/theme/theme';
-import { Lang } from '../../types/lang/languages';
+import { Lang } from '../../types/languages';
 
 interface Props {}
 

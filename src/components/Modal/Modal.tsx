@@ -1,14 +1,16 @@
-import React from "react";
-import { Modal, makeStyles, Backdrop, Fade } from "@material-ui/core";
-import clsx from "clsx";
+import React from 'react';
+import { Modal, makeStyles, Backdrop, Fade } from '@material-ui/core';
+import clsx from 'clsx';
 
-const CustomModal = ({
-  showModal,
-  closeModal,
-  children,
-  className,
-  styles,
-}) => {
+interface Props {
+  showModal: any;
+  closeModal: any;
+  children: any;
+  className?: any;
+  styles?: any;
+}
+
+const CustomModal = ({ showModal, closeModal, children, className, styles }: Props) => {
   const classes = useStyles(styles);
 
   return (
@@ -21,8 +23,7 @@ const CustomModal = ({
       BackdropComponent={Backdrop}
       BackdropProps={{
         timeout: 500,
-      }}
-    >
+      }}>
       <Fade in={showModal}>
         <div className={clsx(classes.paper, className)}>{children}</div>
       </Fade>
@@ -32,17 +33,15 @@ const CustomModal = ({
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   paper: (styles) => ({
-    minWidth: 500,
     backgroundColor: theme.palette.background.paper,
-    // border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    border: "none",
+    border: 'none',
     ...styles,
   }),
 }));

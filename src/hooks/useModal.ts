@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export default (initialState = false) => {
+export default (initialState: boolean = false) => {
   const [showModal, setShowModal] = useState(initialState);
 
   const openModal = () => {
     setShowModal(true);
   };
 
-  const closeModal = (e) => {
+  const closeModal = () => {
     setShowModal(false);
   };
 

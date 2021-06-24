@@ -1,16 +1,18 @@
 import React from 'react';
 
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import ComputerIcon from '@material-ui/icons/Computer';
-import RouterIcon from '@material-ui/icons/Router';
-import PrintIcon from '@material-ui/icons/Print';
-import StorageIcon from '@material-ui/icons/Storage';
-import WifiIcon from '@material-ui/icons/Wifi';
-import PhoneIcon from '@material-ui/icons/Phone';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
-import TvIcon from '@material-ui/icons/Tv';
-import CameraAltIcon from '@material-ui/icons/CameraAlt';
-import { WifiLock } from './icons';
+import {
+  WifiLock,
+  HelpOutlineIcon,
+  ComputerIcon,
+  RouterIcon,
+  PrintIcon,
+  StorageIcon,
+  WifiIcon,
+  PhoneIcon,
+  PhoneIphoneIcon,
+  TvIcon,
+  CameraAltIcon,
+} from '@/assets/icons';
 
 interface Props {
   type: number | 'wifi-lock';

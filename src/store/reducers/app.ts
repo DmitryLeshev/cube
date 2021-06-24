@@ -6,7 +6,7 @@ const initialState: AppState = {
   isLogged: true,
   isOpenChat: false,
   lang: Languages.EN,
-  navbar: false,
+  navbar: true,
   settingbar: false,
   theme: {
     mode: Modes.LIGHT,

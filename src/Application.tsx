@@ -14,11 +14,11 @@ import { SnackbarProvider } from 'notistack';
 
 import { useTypedSelector } from './hooks';
 
-import { IContext } from './types/context/context';
+import { IContext } from './types/context';
 
 import useCustomTheme from './ui/theme';
 import { useTranslation } from 'react-i18next';
-import { Languages } from './types/lang/languages';
+import { Languages } from './types/languages';
 
 export const { Consumer, Provider } = React.createContext<IContext>({
   api: {},

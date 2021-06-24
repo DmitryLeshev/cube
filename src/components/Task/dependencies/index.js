@@ -3,7 +3,7 @@ import Tooltip from '../../Tooltip';
 
 import { iconColor } from '../lib';
 
-import DeviceIcon from '../../../assets/DeviceIcon';
+import { DeviceIcon } from '@/components';
 import {
   IconSwords,
   IconMessage,

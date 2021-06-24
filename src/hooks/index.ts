@@ -6,7 +6,7 @@ import useInput from './useInput';
 import useScroll from './useScroll';
 import useSnackbar from './useSnackbar';
 import useTypedSelector from './useTypedSelector';
-import useCustomModal from './useCustomModal';
+import useModal from './useModal';
 
 export {
   useActions,
@@ -17,5 +17,5 @@ export {
   useScroll,
   useSnackbar,
   useTypedSelector,
-  useCustomModal,
+  useModal,
 };

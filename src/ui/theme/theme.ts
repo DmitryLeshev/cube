@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createMuiTheme } from '@material-ui/core';
 
-import { IColors } from '../../types/theme/color';
+import { IColors } from '../../types/color';
 import { Mode } from '../../types/theme/mode';
 
 interface Props {

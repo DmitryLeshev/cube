@@ -2,10 +2,12 @@ import React, { memo } from 'react';
 import { renderRoutes } from 'react-router-config';
 import { useTranslation } from 'react-i18next';
 
-import { Page } from '../../components';
-import { Tasks, TopTasks, Internet } from './components';
 import { createStyles, makeStyles } from '@material-ui/core';
-import { ITheme } from '../../types/theme/theme';
+
+import { Page } from '@/components';
+import { ITheme } from '@/types/theme';
+
+import { Tasks, TopTasks, Internet, Network, Ports } from './components';
 
 interface Props {
   route: any;
@@ -22,6 +24,8 @@ export default memo(function Home({ route }: Props) {
         <TopTasks isIncident={false} tasks={[]} />
         <TopTasks isIncident={true} tasks={[]} />
         <Internet />
+        <Network />
+        <Ports />
       </div>
       {renderRoutes(route.routes)}
     </Page>

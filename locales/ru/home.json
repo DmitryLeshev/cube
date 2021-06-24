@@ -38,5 +38,14 @@
     "broadcast": "Передача",
     "kbps": "кбит/с",
     "about": "Подробнее о соединении"
+  },
+  "network": {
+    "home-network": "Домашняя сеть",
+    "devices-in-network": "Устройства в сети",
+    "network-information": "Информация о сети",
+    "wired": "Проводные"
+  },
+  "ports": {
+    "network-ports": "Сетевые порты"
   }
 }

@@ -3,18 +3,24 @@ import Navbar from './Navbar';
 import Topbar from './Topbar';
 import Settingbar from './Settingbar';
 import Placeholder from './Placeholder';
-import CustomModal from './Modal';
+import Modal from './Modal';
 import Tooltip from './Tooltip';
+import Chat from './Chat';
+import DeviceIcon from './DeviceIcon';
+import Card from './Card';
 import { Loader, LoaderIndicator } from './Loader';
 
 export {
+  Card,
   Page,
   Navbar,
   Topbar,
   Settingbar,
   Tooltip,
-  CustomModal,
+  Modal,
   Placeholder,
   Loader,
   LoaderIndicator,
+  Chat,
+  DeviceIcon,
 };

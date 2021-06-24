@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles, Divider, useTheme } from '@material-ui/core';
-import { ITheme } from '../../../../types/theme/theme';
 
-import { Typography } from '../../../../ui/components';
-import { useTranslation } from 'react-i18next';
+import { Typography } from '@/ui/components';
+import { ITheme } from '@/types/theme';
 
 import {
   XAxis,
@@ -30,7 +30,7 @@ export default memo(function Internet({}: Props) {
   return (
     <div className={classes.internet}>
       <div className={classes.tt}>
-        <Typography className={classes.title} variant="h4" paragraph>
+        <Typography className={classes.title} variant="h4">
           {t('home:internet.title')}
         </Typography>
         <Divider />
@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme: ITheme) =>
       boxShadow: theme.shadows[3],
     },
     tt: { gridColumn: '1/5' },
-    title: { padding: theme.spacing(0, 3) },
+    title: { padding: theme.spacing(0, 3), marginBottom: theme.spacing(3) },
     sb: {
       gridColumn: '1/5',
       display: 'flex',
@@ -153,7 +153,7 @@ const useStyles = makeStyles((theme: ITheme) =>
       gridTemplateColumns: '1fr 1fr',
       padding: theme.spacing(0, 3),
     },
-    graph: { minWidth: '100%' },
+    graph: { width: '90%', '&:nth-child(2)': { marginLeft: 'auto' } },
     mr: { padding: theme.spacing(0, 3) },
   }),
 );

@@ -19,6 +19,34 @@ export default defineConfig({
         find: /^@material-ui\/core$/,
         replacement: '@material-ui/core/es',
       },
+      {
+        find: '@/',
+        replacement: path.resolve(__dirname, './src'),
+      },
+      {
+        find: '@/ui',
+        replacement: path.resolve(__dirname, './src/ui'),
+      },
+      {
+        find: '@/components',
+        replacement: path.resolve(__dirname, './src/components'),
+      },
+      {
+        find: '@/types',
+        replacement: path.resolve(__dirname, './src/types'),
+      },
+      {
+        find: '@/assets',
+        replacement: path.resolve(__dirname, './src/assets'),
+      },
+      {
+        find: '@/utils',
+        replacement: path.resolve(__dirname, './src/utils'),
+      },
+      {
+        find: '@/hooks',
+        replacement: path.resolve(__dirname, './src/hooks'),
+      },
     ],
     // alias: {
     //   '@/': path.resolve(__dirname, './src'),
@@ -33,6 +61,7 @@ export default defineConfig({
     //   '@/layouts': path.resolve(__dirname, './src/layouts'),
     //   '@/hooks': path.resolve(__dirname, './src/hooks'),
     //   '@/store': path.resolve(__dirname, './src/store'),
+    //   '/^@material-ui/icons/(.*)/': '@material-ui/icons/esm/$1',
     // },
   },
 });

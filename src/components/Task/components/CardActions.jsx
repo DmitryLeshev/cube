@@ -1,24 +1,18 @@
-import React, { useState } from "react";
-import { useParams, useRouteMatch } from "react-router";
-import { useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import { useParams, useRouteMatch } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
-import {
-  Button,
-  makeStyles,
-  Backdrop,
-  TextField,
-  Typography,
-} from "@material-ui/core";
-import { DateTimePicker } from "@material-ui/pickers";
-import { useSnackbar } from "notistack";
+import { Button, makeStyles, Backdrop, TextField, Typography } from '@material-ui/core';
+import { DateTimePicker } from '@material-ui/pickers';
+import { useSnackbar } from 'notistack';
 
-import api from "../api";
+import api from '../api';
 
-import dependencies from "../dependencies";
-import { TasksStatus } from "../config/task";
-import { useInput, useCustomModal } from "../../../hooks";
-import { CustomModal } from "../..";
-import clsx from "clsx";
+import dependencies from '../dependencies';
+import { TasksStatus } from '../config/task';
+import { useInput, useModal } from '@/hooks';
+import { Modal } from '@/components';
+import clsx from 'clsx';
 
 const { transformDate, hh_mm_DD_MM_YYYY } = dependencies.date;
 
@@ -30,25 +24,22 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
   const { url } = useRouteMatch();
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
-  const comment = useCustomInput("");
+  const comment = useCustomInput('');
   // const { enqueueSnackbar } = useCustomSnackbar();
 
-  const modal = useCustomModal();
+  const modal = useModal();
 
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState();
 
-  const isIncident = !!url.split("/").find((el) => el === "incident");
+  const isIncident = !!url.split('/').find((el) => el === 'incident');
 
   const handlerDatePicker = (event) => {
     setSelectedDate(event);
   };
 
   const handlerBackdrop = (event) => {
-    if (
-      event.target.classList &&
-      event.target.classList[1] === classes.backdrop
-    ) {
+    if (event.target.classList && event.target.classList[1] === classes.backdrop) {
       setShowDatePicker(false);
     }
   };
@@ -59,7 +50,7 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
 
   function snackMessage(res) {
     enqueueSnackbar(t(`snackbar.tasks.${res.msg}`), {
-      variant: res.status ? "success" : "error",
+      variant: res.status ? 'success' : 'error',
     });
     closeTask();
   }
@@ -99,7 +90,7 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
   };
 
   const goToIT = async () => {
-    const res = await api.task.button.setDecision({ id, action: "goToIT" });
+    const res = await api.task.button.setDecision({ id, action: 'goToIT' });
     updateItem({ id });
     snackMessage(res);
     // closeTask();
@@ -108,29 +99,20 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
   const tasksBtns = (
     <>
       {status !== TasksStatus.IN_WORK && (
-        <Button
-          className={classes.action}
-          variant="outlined"
-          onClick={toWorkTask}
-        >
+        <Button className={classes.action} variant="outlined" onClick={toWorkTask}>
           {t(`tasks_task-actions.return-task`)}
         </Button>
       )}
       <Button
         className={classes.action}
         variant="outlined"
-        onClick={() => setShowDatePicker(true)}
-      >
+        onClick={() => setShowDatePicker(true)}>
         {status !== TasksStatus.DEFERRED
           ? t(`tasks_task-actions.remind-task`)
           : t(`tasks_task-actions.remind-task_on`)}
       </Button>
       {status !== TasksStatus.CANCELED && (
-        <Button
-          className={classes.action}
-          variant="outlined"
-          onClick={modal.openModal}
-        >
+        <Button className={classes.action} variant="outlined" onClick={modal.openModal}>
           {t(`tasks_task-actions.ignore-task`)}
         </Button>
       )}
@@ -146,19 +128,14 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
     <>
       {data.status !== 6 ? (
         <>
-          <Button
-            className={classes.action}
-            variant="outlined"
-            onClick={modal.openModal}
-          >
+          <Button className={classes.action} variant="outlined" onClick={modal.openModal}>
             {t(`tasks_task-actions.close-incident`)}
           </Button>
           <Button
             className={classes.action}
             variant="outlined"
-            onClick={changePriority}
-          >{`Выставить ${
-            data.priority ? "обычный" : "высокий"
+            onClick={changePriority}>{`Выставить ${
+            data.priority ? 'обычный' : 'высокий'
           } приоритет`}</Button>
         </>
       ) : (
@@ -183,13 +160,12 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
       <Backdrop
         className={classes.backdrop}
         open={showDatePicker}
-        onClick={handlerBackdrop}
-      >
+        onClick={handlerBackdrop}>
         <div className={classes.backdropContainer}>
           <DateTimePicker
             className={classes.marginBottom}
             openTo="month"
-            views={["month", "date", "hours", "minutes"]}
+            views={['month', 'date', 'hours', 'minutes']}
             inputVariant="outlined"
             variant="inline"
             format="HH.mm dd.MM.yyyy"
@@ -207,8 +183,7 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
               const timestamp = dateJs / 1000;
               remindTask(timestamp);
               setShowDatePicker(false);
-            }}
-          >
+            }}>
             Подтвердить
           </Button>
           <Button variant="outlined" onClick={() => setShowDatePicker(false)}>
@@ -216,7 +191,7 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
           </Button>
         </div>
       </Backdrop>
-      <CustomModal {...modal}>
+      <Modal {...modal}>
         <Typography paragraph variant="h3">
           Комментарий
         </Typography>
@@ -232,21 +207,20 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }) => {
         <Button
           className={clsx(classes.mlAuto)}
           variant="outlined"
-          onClick={isIncident ? closeIncident : cancelTask}
-        >
+          onClick={isIncident ? closeIncident : cancelTask}>
           {isIncident
             ? t(`tasks_task-actions.close-incident`)
             : t(`tasks_task-actions.ignore-task`)}
         </Button>
-      </CustomModal>
+      </Modal>
     </div>
   );
 };
 
 const useStyles = makeStyles((theme) => ({
   actionCard: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     padding: theme.spacing(2, 3, 0),
   },
   action: { margin: theme.spacing(0, 2, 2, 0) },
@@ -254,8 +228,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
   },
   backdropContainer: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     padding: theme.spacing(3),
     borderRadius: 3,
     backgroundColor: theme.palette.background.default,
@@ -273,7 +247,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   mlAuto: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
 }));
 

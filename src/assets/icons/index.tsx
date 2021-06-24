@@ -3,8 +3,37 @@ import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LanguageIcon from '@material-ui/icons/Language';
 
-export const IconSwords = (props) => {
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import ComputerIcon from '@material-ui/icons/Computer';
+import RouterIcon from '@material-ui/icons/Router';
+import PrintIcon from '@material-ui/icons/Print';
+import StorageIcon from '@material-ui/icons/Storage';
+import WifiIcon from '@material-ui/icons/Wifi';
+import PhoneIcon from '@material-ui/icons/Phone';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+import TvIcon from '@material-ui/icons/Tv';
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
+
+export {
+  MenuIcon,
+  SettingsIcon,
+  ExitToAppIcon,
+  LanguageIcon,
+  HelpOutlineIcon,
+  ComputerIcon,
+  RouterIcon,
+  PrintIcon,
+  StorageIcon,
+  WifiIcon,
+  PhoneIcon,
+  PhoneIphoneIcon,
+  TvIcon,
+  CameraAltIcon,
+};
+
+export const IconSwords = (props: any) => {
   return (
     <svg
       width="86"
@@ -21,7 +50,7 @@ export const IconSwords = (props) => {
   );
 };
 
-export const IconRadiation = (props) => {
+export const IconRadiation = (props: any) => {
   return (
     <svg
       width="88"
@@ -38,7 +67,7 @@ export const IconRadiation = (props) => {
   );
 };
 
-export const IconSettings = (props) => {
+export const IconSettings = (props: any) => {
   return (
     <svg
       width="78"
@@ -55,7 +84,7 @@ export const IconSettings = (props) => {
   );
 };
 
-export const IconMessage = (props) => {
+export const IconMessage = (props: any) => {
   return (
     <svg
       width="80"
@@ -96,19 +125,19 @@ export const WifiLock = ({ className }) => (
   </svg>
 );
 
-export const Internet = (props) => (
+export const Internet = (props: any) => (
   <svg {...props} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.9 15.39C15.64 14.59 14.89 14 14 14H13V11C13 10.7348 12.8946 10.4804 12.7071 10.2929C12.5196 10.1054 12.2652 10 12 10H6V8H8C8.26522 8 8.51957 7.89464 8.70711 7.70711C8.89464 7.51957 9 7.26522 9 7V5H11C11.5304 5 12.0391 4.78929 12.4142 4.41421C12.7893 4.03914 13 3.53043 13 3V2.59C15.93 3.77 18 6.64 18 10C18 12.08 17.2 13.97 15.9 15.39ZM9 17.93C5.05 17.44 2 14.08 2 10C2 9.38 2.08 8.78 2.21 8.21L7 13V14C7 14.5304 7.21071 15.0391 7.58579 15.4142C7.96086 15.7893 8.46957 16 9 16V17.93ZM10 0C8.68678 0 7.38642 0.258658 6.17317 0.761205C4.95991 1.26375 3.85752 2.00035 2.92893 2.92893C1.05357 4.8043 0 7.34784 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C3.85752 17.9997 4.95991 18.7362 6.17317 19.2388C7.38642 19.7413 8.68678 20 10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7362 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0Z" />
   </svg>
 );
 
-export const NoInternet = (props) => (
+export const NoInternet = (props: any) => (
   <svg {...props} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path d="M20 3.27L18.5 4.75C19.46 6.28 20 8.07 20 10C20 12.6522 18.9464 15.1957 17.0711 17.0711C15.1957 18.9464 12.6522 20 10 20C8.08 20 6.28 19.46 4.75 18.5L3.27 20L2 18.72L18.72 2L20 3.27ZM15.9 15.39C17.2 13.97 18 12.08 18 10C18 8.63 17.66 7.34 17.05 6.22L12.83 10.44C12.94 10.6 13 10.79 13 11V14H14C14.89 14 15.64 14.59 15.9 15.39ZM9 17.93V16C8.5 16 8.07 15.83 7.73 15.54L6.22 17.05C7.07 17.5 8 17.8 9 17.93ZM13 2.59V3C13 3.53043 12.7893 4.03914 12.4142 4.41421C12.0391 4.78929 11.5304 5 11 5H9V7C9 7.26522 8.89464 7.51957 8.70711 7.70711C8.51957 7.89464 8.26522 8 8 8H6V10H8.18L6.09 12.09L2.21 8.21C2.08 8.78 2 9.38 2 10C2 11.74 2.56 13.36 3.5 14.67L2.08 16.1C0.77 14.41 0 12.3 0 10C0 7.34784 1.05357 4.8043 2.92893 2.92893C4.8043 1.05357 7.34784 0 10 0C12.3 0 14.41 0.77 16.1 2.08L14.67 3.5C14.16 3.14 13.6 2.83 13 2.59Z" />
   </svg>
 );
 
-export const JavaScript = (props) => (
+export const JavaScript = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -117,7 +146,7 @@ export const JavaScript = (props) => (
   </svg>
 );
 
-export const Css = (props) => (
+export const Css = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -126,7 +155,7 @@ export const Css = (props) => (
   </svg>
 );
 
-export const Html = (props) => (
+export const Html = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -135,7 +164,7 @@ export const Html = (props) => (
   </svg>
 );
 
-export const Json = (props) => (
+export const Json = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -144,7 +173,7 @@ export const Json = (props) => (
   </svg>
 );
 
-export const Xml = (props) => (
+export const Xml = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -153,7 +182,7 @@ export const Xml = (props) => (
   </svg>
 );
 
-export const Php = (props) => (
+export const Php = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -162,7 +191,7 @@ export const Php = (props) => (
   </svg>
 );
 
-export const DotNet = (props) => (
+export const DotNet = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -171,7 +200,7 @@ export const DotNet = (props) => (
   </svg>
 );
 
-export const Image = (props) => (
+export const Image = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -180,7 +209,7 @@ export const Image = (props) => (
   </svg>
 );
 
-export const Folder = (props) => (
+export const Folder = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -189,7 +218,7 @@ export const Folder = (props) => (
   </svg>
 );
 
-export const FolderOpen = (props) => (
+export const FolderOpen = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -198,7 +227,7 @@ export const FolderOpen = (props) => (
   </svg>
 );
 
-export const File = (props) => (
+export const File = (props: any) => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
@@ -206,5 +235,3 @@ export const File = (props) => (
     />
   </svg>
 );
-
-export { MenuIcon, SettingsIcon, ExitToAppIcon };
