@@ -47,6 +47,10 @@ export default defineConfig({
         find: '@/hooks',
         replacement: path.resolve(__dirname, './src/hooks'),
       },
+      {
+        find: '@/pages',
+        replacement: path.resolve(__dirname, './src/pages'),
+      },
     ],
     // alias: {
     //   '@/': path.resolve(__dirname, './src'),

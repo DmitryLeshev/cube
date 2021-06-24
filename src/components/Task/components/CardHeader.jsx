@@ -1,13 +1,13 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { makeStyles, IconButton, Typography, Avatar } from "@material-ui/core";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { makeStyles, IconButton, Typography, Avatar } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import { TasksTypeImg, TasksType } from "../config/task";
+import { TasksTypeImg, TasksType } from '../config/task';
 
-import dependencies from "../dependencies";
-import { useRouteMatch } from "react-router";
+import dependencies from '../dependencies';
+import { useRouteMatch } from 'react-router';
 
 const { iconColor } = dependencies.icon;
 
@@ -32,7 +32,7 @@ const HeaderCard = ({
 
   const isIncident = incident
     ? incident
-    : !!url.split("/").find((path) => path === "incident");
+    : !!url.split('/').find((path) => path === 'incident');
 
   let variables = {};
   titleVars &&
@@ -40,8 +40,8 @@ const HeaderCard = ({
       variables[key] = titleVars[key];
     });
   const taskName = t(
-    `${isIncident ? "incident" : "task"}:list.${taskNumber}.title`,
-    variables
+    `${isIncident ? 'incident' : 'task'}:list.${taskNumber}.title`,
+    variables,
   );
 
   const TaskIcon = taskType ? TasksTypeImg[TasksType[taskType]] : null;
@@ -49,26 +49,19 @@ const HeaderCard = ({
   return (
     <div className={classes.header}>
       {windowCard && (
-        <IconButton
-          className={classes.buttonBack}
-          aria-label="back"
-          onClick={closeTask}
-        >
+        <IconButton className={classes.buttonBack} aria-label="back" onClick={closeTask}>
           <ArrowBackIcon className={classes.buttonBackIcon} fontSize="large" />
         </IconButton>
       )}
       <Avatar className={classes.icon} aria-label="back">
         {TaskIcon && <TaskIcon className={classes.iconSvg} />}
       </Avatar>
-      <Typography
-        className={classes.detailsTitle}
-        variant={dashboard ? "body1" : "h3"}
-      >
-        {taskName ? taskName : "Нет имени"}
+      <Typography className={classes.detailsTitle} variant={dashboard ? 'body1' : 'h4'}>
+        {taskName ? taskName : 'Нет имени'}
       </Typography>
 
       <Typography className={classes.hash} variant="h6">
-        #{taskId ? taskId : id || "007"}
+        #{taskId ? taskId : id || '007'}
       </Typography>
     </div>
   );
@@ -76,24 +69,24 @@ const HeaderCard = ({
 
 const useStyles = makeStyles((theme) => ({
   header: ({ windowCard }) => ({
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     minHeight: 50,
-    width: "100%",
+    width: '100%',
     padding: theme.spacing(2, 3),
     borderBottom: windowCard ? `1px solid ${theme.palette.divider}` : null,
   }),
   icon: (props) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginRight: theme.spacing(3),
     padding: theme.spacing(1),
     backgroundColor: iconColor(
       theme,
       TasksType[props.taskType],
       props.crt,
-      props.priority
+      props.priority,
     ),
   }),
   iconSvg: {
@@ -106,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonBackIcon: {},
   detailsTitle: () => ({
-    display: "flex",
+    display: 'flex',
     marginRight: theme.spacing(3),
   }),
   detailsTitleIcon: {
@@ -114,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
   },
   hash: {
     ...theme.typography.h6,
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
 }));
 

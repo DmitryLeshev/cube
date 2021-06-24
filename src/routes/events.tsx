@@ -1,6 +1,7 @@
-import { Events } from '../pages';
-import Incidents from '../pages/events/components/Incidents';
-import Tasks from '../pages/events/components/Tasks';
+import { Events } from '@/pages';
+import Template from '@/pages/events/components/Template';
+import Task from '@/components/Task';
+
 import { redirect404 } from './errors';
 
 export default {
@@ -9,7 +10,7 @@ export default {
   routes: [
     {
       path: '/events/incidents/:eventId?',
-      component: Incidents,
+      component: Template,
       routes: [
         {
           path: '/events/incidents',
@@ -18,7 +19,7 @@ export default {
         },
         {
           path: '/events/incidents/:eventId',
-          component: ({ eventId }: any) => `[events] eventId ${eventId}`,
+          component: Task,
           exact: true,
         },
         redirect404,
@@ -26,7 +27,7 @@ export default {
     },
     {
       path: '/events/tasks/:status/:eventId?',
-      component: Tasks,
+      component: Template,
       routes: [
         {
           path: '/events/tasks/:status',
@@ -35,7 +36,7 @@ export default {
         },
         {
           path: '/events/tasks/:status/:eventId',
-          component: ({ eventId }: { eventId: string }) => `[events] eventId ${eventId}`,
+          component: Task,
           exact: true,
         },
         redirect404,

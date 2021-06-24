@@ -32,7 +32,7 @@ const DeviceIcon = ({ type, className }: Props) => {
   if (type === 9) return <WifiIcon className={className} />;
   if (type === 'wifi-lock') return <WifiLock className={className} />;
   if (type === 10) return <PhoneIphoneIcon className={className} />;
-  return `${type}`;
+  return null;
 };
 
 export default DeviceIcon;

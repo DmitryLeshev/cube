@@ -1,11 +1,11 @@
-import { createStyles, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
 import React, { memo } from 'react';
 import { renderRoutes, RouteConfig } from 'react-router-config';
+import { createStyles, makeStyles } from '@material-ui/core';
+import clsx from 'clsx';
 
-import { Topbar, Navbar, Settingbar } from '../../components';
-import { useTypedSelector } from '../../hooks';
-import { ITheme } from '../../types/theme/theme';
+import { useTypedSelector } from '@/hooks';
+import { Topbar, Navbar, Settingbar } from '@/components';
+import { ITheme } from '@/types/theme';
 
 interface Props {
   route: RouteConfig;

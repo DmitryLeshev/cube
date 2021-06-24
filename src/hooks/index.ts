@@ -7,8 +7,10 @@ import useScroll from './useScroll';
 import useSnackbar from './useSnackbar';
 import useTypedSelector from './useTypedSelector';
 import useModal from './useModal';
+import useTabs from './useTabs';
 
 export {
+  useTabs,
   useActions,
   useArray,
   useColorPicker,

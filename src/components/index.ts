@@ -8,9 +8,11 @@ import Tooltip from './Tooltip';
 import Chat from './Chat';
 import DeviceIcon from './DeviceIcon';
 import Card from './Card';
+import Tabs from './Tabs';
 import { Loader, LoaderIndicator } from './Loader';
 
 export {
+  Tabs,
   Card,
   Page,
   Navbar,
