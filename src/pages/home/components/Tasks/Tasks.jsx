@@ -166,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
   },
   valueItem: {
     position: 'absolute',
-    top: -16,
+    top: 0,
     fontSize: '88px',
     margin: 0,
     color: theme.palette.getContrastText('#000000'),

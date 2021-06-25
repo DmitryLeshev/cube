@@ -2,9 +2,10 @@ import app from './app';
 import count from './count';
 import todo from './todo';
 import user from './user';
+import device from './device';
 
-// eslint-disable-next-line
 export default {
+  device,
   user,
   todo,
   app,

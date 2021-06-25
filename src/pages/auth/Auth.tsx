@@ -1,5 +1,4 @@
 import React, { memo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -11,64 +10,69 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { ITheme } from '../../types/theme/theme';
-import { Input, Button } from '../../ui/components';
+import { Input, Button } from '@/ui/components';
+import { withContext } from '@/hocs';
 
-interface Props {}
+import { ITheme } from '@/types/theme';
+import { IContext } from '@/types/context';
+
+interface Props extends IContext {}
 interface State {
   login: string;
   password: string;
 }
-export default memo(function Auth({}: Props) {
-  const { t } = useTranslation();
-  const history = useHistory();
+export default withContext(
+  memo(function Auth({ auth }: Props) {
+    const { t } = useTranslation();
 
-  const [state, setState] = useState<State>({ login: '', password: '' });
+    const [state, setState] = useState<State>({ login: '', password: '' });
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.currentTarget;
-    setState((prev) => {
-      return { ...prev, [name]: value };
-    });
-  };
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.currentTarget;
+      setState((prev) => {
+        return { ...prev, [name]: value };
+      });
+    };
 
-  const classes = useStyles();
-  return (
-    <Card className={classes.card}>
-      <CardContent className={classes.content}>
-        <Typography variant="subtitle2" gutterBottom>
-          {t('auth:enter')}
-        </Typography>
+    const classes = useStyles();
+    return (
+      <Card className={classes.card}>
+        <CardContent className={classes.content}>
+          <Typography variant="subtitle2" gutterBottom>
+            {t('auth:enter')}
+          </Typography>
 
-        <Input
-          className={classes.input}
-          name="login"
-          label={t('auth:login')}
-          value={state.login}
-          onChange={onChange}
-        />
-        <Input
-          className={classes.input}
-          name="password"
-          label={t('auth:password')}
-          value={state.password}
-          onChange={onChange}
-          type="password"
-        />
-      </CardContent>
-      <CardActions>
-        <Button
-          className={classes.btn}
-          onClick={() => {
-            localStorage.setItem('app.status', 'logged');
-            history.push('/home');
-          }}>
-          {t('auth:login-to')}
-        </Button>
-      </CardActions>
-    </Card>
-  );
-});
+          <Input
+            className={classes.input}
+            name="login"
+            label={t('auth:login')}
+            value={state.login}
+            onChange={onChange}
+          />
+          <Input
+            className={classes.input}
+            name="password"
+            label={t('auth:password')}
+            value={state.password}
+            onChange={onChange}
+            type="password"
+          />
+        </CardContent>
+        <CardActions>
+          <Button
+            className={classes.btn}
+            onClick={async () => {
+              const { login, password } = state;
+              await auth.login({ login, password });
+              await auth.checkAuth();
+            }}>
+            {t('auth:login-to')}
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  }),
+);
 
 const useStyles = makeStyles((theme: ITheme) =>
   createStyles({

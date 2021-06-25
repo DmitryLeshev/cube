@@ -1,44 +1,50 @@
-let api = {
-  wizard: {
-    getStatus: [],
-    checkAuth: [],
-    checkKey: ['key'],
-    createNewUser: ['key', 'login', 'password', 'firstname', 'lastname'],
-    login: ['password', 'login'],
-    getDevices: [],
-    getWifi: [],
-    protect: ['devices', 'wifi'],
-    getLicenses: ['getLicenses'],
-  },
-  auth: {
-    status: [],
-    login: ['password', 'login'],
-    logout: [],
-  },
-  main: {
-    index: [],
-    getJsonLang: ['lang'],
-    getMainData: [],
-    getGraphicData: ['age'],
-  },
-};
+import { fetchData } from '@/common/http-client';
 
-const build = (api: any) => {
-  Object.entries(api).forEach(([interfaceName, methods]: any) => {
+const build = async () => {
+  const { data } = await fetchData({ 'project/map': null });
+  const api: any = {};
+  const apiParams: any = {};
+  Object.entries(data).forEach(([interfaceName, methods]: any) => {
+    interfaceName = interfaceName[0].toLowerCase() + interfaceName.slice(1);
+    api[interfaceName] = {};
+    apiParams[interfaceName] = {};
     Object.entries(methods).forEach(([methodName, params]: any) => {
-      const codeMethod = `async (args) => {
-        console.log('${interfaceName + '/' + methodName}', {args});
-        const res = await args;
-        console.log('${interfaceName + '/' + methodName}', {res});
-        return res;
-      }`;
-      api[interfaceName][methodName] = {
-        params,
-        method: eval(codeMethod),
-      };
+      const path = `${interfaceName + '/' + methodName}`;
+      const method = async (args: any) => await fetchData({ [path]: args });
+      api[interfaceName][methodName] = method;
+      apiParams[interfaceName][methodName] = params;
     });
   });
-  return api;
+  console.log('[api] available methods', apiParams);
+  return { api, apiParams };
 };
 
-export default build(api);
+export default build;
+
+// let api = {
+//   wizard: {
+//     getStatus: [],
+//     checkAuth: [],
+//     checkKey: ['key'],
+//     createNewUser: ['key', 'login', 'password', 'firstname', 'lastname'],
+//     login: ['password', 'login'],
+//     getDevices: [],
+//     getWifi: [],
+//     protect: ['devices', 'wifi'],
+//     getLicenses: ['getLicenses'],
+//   },
+//   auth: {
+//     status: [],
+//     login: ['password', 'login'],
+//     logout: [],
+//   },
+//   main: {
+//     index: [],
+//     getJsonLang: ['lang'],
+//     getMainData: [],
+//     getGraphicData: ['age'],
+//   },
+//   device: {
+//     list: [],
+//   },
+// };

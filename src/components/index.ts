@@ -9,6 +9,7 @@ import Chat from './Chat';
 import DeviceIcon from './DeviceIcon';
 import Card from './Card';
 import Tabs from './Tabs';
+import Tmpl from './Tmpl';
 import { Loader, LoaderIndicator } from './Loader';
 
 export {
@@ -25,4 +26,5 @@ export {
   LoaderIndicator,
   Chat,
   DeviceIcon,
+  Tmpl,
 };

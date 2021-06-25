@@ -1,10 +1,17 @@
 import { Devices } from '../pages';
-import Details from '../pages/devices/components/Details';
-import Placeholder from '../pages/devices/components/Placeholder';
+
+import {
+  Details,
+  Placeholder,
+  TabEvents,
+  TabInfo,
+  TabPrograms,
+} from '../pages/devices/components';
+
 import { redirect404 } from './errors';
 
 export default {
-  path: '/devices/:type',
+  path: '/devices/:type/:id?',
   component: Devices,
   routes: [
     {
@@ -33,7 +40,7 @@ export default {
         },
         {
           path: '/devices/:type/:id/info',
-          component: () => '[tab] info',
+          component: TabInfo,
           exact: true,
         },
         {
@@ -53,7 +60,7 @@ export default {
         },
         {
           path: '/devices/:type/:id/programs',
-          component: () => '[tab] programs',
+          component: TabPrograms,
           exact: true,
         },
         {
@@ -73,7 +80,12 @@ export default {
         },
         {
           path: '/devices/:type/:id/tasks',
-          component: () => '[tab] tasks',
+          component: TabEvents,
+          exact: true,
+        },
+        {
+          path: '/devices/:type/:id/incidents',
+          component: TabEvents,
           exact: true,
         },
         {

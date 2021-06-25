@@ -1,63 +1,63 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 
 import { AppBar, Toolbar, createStyles, makeStyles } from '@material-ui/core';
-
-import { Typography, IconButton } from '../../ui/components';
-
-import MenuIcon from '@material-ui/icons/Menu';
-import SettingsIcon from '@material-ui/icons/Settings';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-// import { ExitToAppIcon, MenuIcon, SettingsIcon } from '../../static/icons';
-import { ITheme } from '../../types/theme/theme';
 import clsx from 'clsx';
-import { useActions, useTypedSelector } from '../../hooks';
 
-interface Props {}
+import { withContext } from '@/hocs';
+import { useActions, useTypedSelector } from '@/hooks';
+import { Typography, IconButton } from '@/ui/components';
+import { ExitToAppIcon, MenuIcon, SettingsIcon } from '@/assets/icons';
+import { ITheme } from '@/types/theme';
+import { IContext } from '@/types/context';
 
-export default memo(function Topbar({}: Props) {
-  const { navbar, name } = useTypedSelector((state) => state.app);
-  const { appChangeSettingbar, appChangeNavbar } = useActions();
+interface Props extends IContext {}
 
-  const classes = useStyles();
-  const match = useRouteMatch();
-  const history = useHistory();
+export default withContext(
+  memo(function Topbar({ auth }: Props) {
+    const { navbar, name } = useTypedSelector((state) => state.app);
+    const { appChangeSettingbar, appChangeNavbar } = useActions();
 
-  const isNotDashboard = match.url === '/auth' || match.url === '/activation';
-  return (
-    <AppBar
-      className={clsx(classes.header, {
-        [classes.topBarShift]: !isNotDashboard && navbar,
-      })}
-      color="primary"
-      position="relative">
-      <Toolbar>
-        {!isNotDashboard && (
-          <IconButton onClick={appChangeNavbar}>
-            <MenuIcon className={classes.icon} />
+    const classes = useStyles();
+    const match = useRouteMatch();
+    const history = useHistory();
+
+    const isNotDashboard = match.url === '/auth' || match.url === '/activation';
+    return (
+      <AppBar
+        className={clsx(classes.header, {
+          [classes.topBarShift]: !isNotDashboard && navbar,
+        })}
+        color="primary"
+        position="relative">
+        <Toolbar>
+          {!isNotDashboard && (
+            <IconButton onClick={appChangeNavbar}>
+              <MenuIcon className={classes.icon} />
+            </IconButton>
+          )}
+
+          <Typography className={classes.brend} variant="h4" component={Link} to="/home">
+            {name}
+          </Typography>
+
+          <IconButton className={classes.right} onClick={appChangeSettingbar}>
+            <SettingsIcon className={classes.icon} />
           </IconButton>
-        )}
-
-        <Typography className={classes.brend} variant="h4" component={Link} to="/home">
-          {name}
-        </Typography>
-
-        <IconButton className={classes.right} onClick={appChangeSettingbar}>
-          <SettingsIcon className={classes.icon} />
-        </IconButton>
-        {!isNotDashboard && (
-          <IconButton
-            onClick={() => {
-              localStorage.setItem('app.status', 'auth');
-              history.push('/auth');
-            }}>
-            <ExitToAppIcon className={classes.icon} />
-          </IconButton>
-        )}
-      </Toolbar>
-    </AppBar>
-  );
-});
+          {!isNotDashboard && (
+            <IconButton
+              onClick={async () => {
+                await auth.logout();
+                await auth.checkAuth();
+              }}>
+              <ExitToAppIcon className={classes.icon} />
+            </IconButton>
+          )}
+        </Toolbar>
+      </AppBar>
+    );
+  }),
+);
 
 const useStyles = makeStyles((theme: ITheme) =>
   createStyles({

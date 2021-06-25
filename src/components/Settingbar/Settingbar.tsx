@@ -11,7 +11,6 @@ import {
   createStyles,
   makeStyles,
   Drawer,
-  Divider,
   ButtonGroup,
   Button,
   Menu,
@@ -21,10 +20,10 @@ import LanguageIcon from '@material-ui/icons/Language';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 // import { ContentsTitle, PaletteColors, ModesThemes } from './components';
-import { useTypedSelector, useActions } from '../../hooks';
 
-import { ITheme } from '../../types/theme/theme';
-import { Lang } from '../../types/languages';
+import { useTypedSelector, useActions } from '@/hooks';
+import { ITheme } from '@/types/theme';
+import { Lang } from '@/types/languages';
 
 interface Props {}
 
@@ -46,11 +45,12 @@ export default memo(function Settingbar({}: Props) {
 
   const changeLanguage = (language: Lang) => {
     appChangeLang(language);
+    localStorage.setItem('app.lang', language);
     i18n.changeLanguage(language);
   };
 
   useEffect(() => {
-    const lang: any = localStorage.getItem('i18nextLng');
+    const lang: any = localStorage.getItem('app.lang');
     appChangeLang(lang ?? 'ru');
   }, []);
 
