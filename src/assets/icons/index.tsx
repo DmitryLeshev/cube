@@ -15,6 +15,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import TvIcon from '@material-ui/icons/Tv';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import CreateIcon from '@material-ui/icons/Create';
 
 export {
   MenuIcon,
@@ -31,6 +32,7 @@ export {
   PhoneIphoneIcon,
   TvIcon,
   CameraAltIcon,
+  CreateIcon,
 };
 
 export const IconSwords = (props: any) => {

@@ -10,10 +10,14 @@ import DeviceIcon from './DeviceIcon';
 import Card from './Card';
 import Tabs from './Tabs';
 import Tmpl from './Tmpl';
+import Table from './Table';
+import Enumeration from './Enumeration';
 import { Loader, LoaderIndicator } from './Loader';
 
 export {
   Tabs,
+  Table,
+  Enumeration,
   Card,
   Page,
   Navbar,

@@ -514,6 +514,13 @@
     "@types/scheduler" "*"
     "csstype" "^3.0.2"
 
+"@types/redux-logger@^3.0.8":
+  "integrity" "sha512-zM+cxiSw6nZtRbxpVp9SE3x/X77Z7e7YAfHD1NkxJyJbAGSXJGF0E9aqajZfPOa/sTYnuwutmlCldveExuCeLw=="
+  "resolved" "https://registry.npmjs.org/@types/redux-logger/-/redux-logger-3.0.8.tgz"
+  "version" "3.0.8"
+  dependencies:
+    "redux" "^4.0.0"
+
 "@types/resize-observer-browser@^0.1.5":
   "integrity" "sha512-8k/67Z95Goa6Lznuykxkfhq9YU3l1Qe6LNZmwde1u7802a3x8v44oq0j91DICclxatTr0rNnhXx7+VTIetSrSQ=="
   "resolved" "https://registry.npmjs.org/@types/resize-observer-browser/-/resize-observer-browser-0.1.5.tgz"

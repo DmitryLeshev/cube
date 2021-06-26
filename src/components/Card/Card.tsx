@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme: ITheme) =>
     },
     footer: {
       display: 'flex',
-      flexDirection: 'column',
       padding: theme.spacing(1, 2),
       background: theme.palette.background.default,
     },

@@ -27,8 +27,12 @@ export default memo(function Details({ route }: Props) {
       <div className={classes.detail}>
         <DeviceIcon className={classes.icon} type={1} />
         <div className={classes.names}>
-          <Typography variant="h5">{'name'}</Typography>
-          <Typography variant="body1">{'last name'}</Typography>
+          <Typography className={classes.name} variant="h4">
+            {'name'}
+          </Typography>
+          <Typography className={classes.ip} variant="body1">
+            {'last name'}
+          </Typography>
         </div>
         <Typography className={classes.status}>
           {t('devices:header.agentIsRunning')}
@@ -40,7 +44,7 @@ export default memo(function Details({ route }: Props) {
           tabsConfig={tabsConfig(match.params.id)}
         />
       </div>
-      <div className={classes.tab}>{renderRoutes(route.routes)}</div>
+      {renderRoutes(route.routes, { className: classes.tab })}
     </>
   );
 });
@@ -58,9 +62,23 @@ const useStyles = makeStyles((theme: ITheme) =>
       alignItems: 'center',
     },
     tabs: { boxShadow: 'none', gridColumn: '1/5' },
-    icon: { margin: theme.spacing(0, 2), width: 64, height: 64 },
-    status: { margin: theme.spacing(0, 2), placeItems: 'center' },
+    icon: {
+      margin: theme.spacing(0, 2),
+      width: 80,
+      height: 80,
+      fill: theme.palette.primary.dark,
+    },
+    status: { margin: theme.spacing(0, 2), color: theme.palette.success.dark },
     names: {},
-    tab: { margin: theme.spacing(0, 2), flexGrow: 2 },
+    tab: {
+      display: 'grid',
+      gap: theme.spacing(2),
+      padding: theme.spacing(0, 2),
+      flexGrow: 2,
+      overflow: 'auto',
+      height: 0,
+    },
+    name: {},
+    ip: {},
   }),
 );

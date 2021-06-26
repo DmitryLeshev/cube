@@ -71,7 +71,6 @@ export default memo(function Application({ routes }: Props) {
 
   async function checkAuth() {
     const { msg } = await auth.status();
-    console.log({ checkAuth: msg });
     if (msg === CubicStatus.AUTHORIZED) {
       localStorage.setItem(AppStatus.LOCAL_PATH, AppStatus.LOGGED);
     } else if (msg === CubicStatus.NOT_AUTHORIZED) {
@@ -109,6 +108,8 @@ export default memo(function Application({ routes }: Props) {
       deviceAddListAsync();
     });
   }, []);
+
+  console.log('[render] App');
 
   return (
     <Provider value={{ api, auth: { ...auth, checkAuth } }}>

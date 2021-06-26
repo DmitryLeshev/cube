@@ -30,8 +30,6 @@ const TabsComponent = ({
   const { t } = useTranslation();
   const classes = useStyles();
 
-  console.log({ match });
-
   const _renderTab = () => {
     return tabsConfig.map((tc) => {
       const { id, i18next, url } = tc;

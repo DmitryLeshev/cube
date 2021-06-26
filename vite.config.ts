@@ -63,6 +63,10 @@ export default defineConfig({
         find: '@/hocs',
         replacement: path.resolve(__dirname, './src/hocs'),
       },
+      {
+        find: '@/store',
+        replacement: path.resolve(__dirname, './src/store'),
+      },
     ],
   },
 });

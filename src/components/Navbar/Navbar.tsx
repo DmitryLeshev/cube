@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import { createStyles, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
-import { useTypedSelector } from '../../hooks';
-import { ITheme } from '../../types/theme/theme';
+import { useTypedSelector } from '@/hooks';
+import { ITheme } from '@/types/theme';
 import navigationConfig from './navigationConfig';
 import Navigation from './Navigation';
 interface Props {}
 
 export default memo(function Sidebar({}: Props) {
-  const { navbar } = useTypedSelector((state) => state.app);
+  const state = useTypedSelector((state) => state);
   const classes = useStyles();
   return (
-    <div className={clsx(classes.navbar, { [classes.navbarShift]: navbar })}>
+    <div className={clsx(classes.navbar, { [classes.navbarShift]: state.app.navbar })}>
       <div className={classes.navigation}>
-        {navigationConfig.map((list: any) => (
+        {navigationConfig(state).map((list: any) => (
           <Navigation
             taskCounter={{
               countAttacks: 1,

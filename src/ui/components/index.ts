@@ -4,5 +4,7 @@ import Input from './Input';
 import Button from './Button';
 import Badge from './Badge';
 import Divider from './Divider';
+import List from './List';
+import ListItem from './ListItem';
 
-export { Typography, IconButton, Input, Button, Badge, Divider };
+export { List, ListItem, Typography, IconButton, Input, Button, Badge, Divider };
