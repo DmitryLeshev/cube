@@ -1,11 +1,11 @@
-import React from "react";
-import { ListItemText, Typography } from "@material-ui/core";
-import Edit from "../../Edit/Edit";
-import clsx from "clsx";
-import { useCustomModal } from "../../../assets/hooks";
-import EditChecks from "./EditChecks";
-import EntryModal from "./EntryModal";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { ListItemText, Typography } from '@material-ui/core';
+import Edit from '../../Edit/Edit';
+import clsx from 'clsx';
+import { useCustomModal } from '../../../assets/hooks';
+import EditChecks from './EditChecks';
+import EntryModal from './EntryModal';
+import { Link } from 'react-router-dom';
 
 const Checks = ({ classes, checks, el, refreshData }) => {
   const { next, last, settings } = checks;
@@ -34,9 +34,7 @@ const Checks = ({ classes, checks, el, refreshData }) => {
             }
             secondary={
               <Typography variant="body1">
-                {last.secondary || (
-                  <span className={classes.mdash}>&mdash;</span>
-                )}
+                {last.secondary || <span className={classes.mdash}>&mdash;</span>}
               </Typography>
             }
           />
@@ -50,9 +48,7 @@ const Checks = ({ classes, checks, el, refreshData }) => {
             }
             secondary={
               <Typography variant="body1">
-                {next.secondary || (
-                  <span className={classes.mdash}>&mdash;</span>
-                )}
+                {next.secondary || <span className={classes.mdash}>&mdash;</span>}
               </Typography>
             }
           />
@@ -70,7 +66,7 @@ const Checks = ({ classes, checks, el, refreshData }) => {
                   styles={{
                     right: 0,
                     top: 0,
-                    transform: "translate(140%, -30%)",
+                    transform: 'translate(140%, -30%)',
                   }}
                 />
               ) : null}
@@ -78,9 +74,8 @@ const Checks = ({ classes, checks, el, refreshData }) => {
               <Typography
                 onClick={!setting.url ? openModal : null}
                 className={clsx(classes.link, classes.blue)}
-                component={setting.url ? Link : "span"}
-                to={setting.url && setting.url(el.settingId)}
-              >
+                component={setting.url ? Link : 'span'}
+                to={setting.url && setting.url(el.settingId)}>
                 {value}
               </Typography>
             </Typography>

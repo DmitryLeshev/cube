@@ -31,5 +31,5 @@
     "typeRoots": ["./typings/"]
   },
   "include": ["./src", "./typings", "./vite.config.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["src/**/*.spec.ts", "node_modules"]
 }

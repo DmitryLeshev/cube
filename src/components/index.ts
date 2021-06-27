@@ -1,34 +1,34 @@
-import Page from './Page';
-import Navbar from './Navbar';
-import Topbar from './Topbar';
-import Settingbar from './Settingbar';
-import Placeholder from './Placeholder';
-import Modal from './Modal';
-import Tooltip from './Tooltip';
+import Card from './Card';
 import Chat from './Chat';
 import DeviceIcon from './DeviceIcon';
-import Card from './Card';
-import Tabs from './Tabs';
-import Tmpl from './Tmpl';
-import Table from './Table';
 import Enumeration from './Enumeration';
 import { Loader, LoaderIndicator } from './Loader';
+import Modal from './Modal';
+import Navbar from './Navbar';
+import Page from './Page';
+import Placeholder from './Placeholder';
+import Settingbar from './Settingbar';
+import Table from './Table';
+import Tabs from './Tabs';
+import Tmpl from './Tmpl';
+import Tooltip from './Tooltip';
+import Topbar from './Topbar';
 
 export {
-  Tabs,
-  Table,
-  Enumeration,
   Card,
-  Page,
-  Navbar,
-  Topbar,
-  Settingbar,
-  Tooltip,
-  Modal,
-  Placeholder,
-  Loader,
-  LoaderIndicator,
   Chat,
   DeviceIcon,
+  Enumeration,
+  Loader,
+  LoaderIndicator,
+  Modal,
+  Navbar,
+  Page,
+  Placeholder,
+  Settingbar,
+  Table,
+  Tabs,
   Tmpl,
+  Tooltip,
+  Topbar,
 };

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useSnackbarTemplates } from "../../lib";
+import { useSnackbarTemplates } from '../../lib';
 
-import api from "../../../api";
+import api from '../../../api';
 import {
   Button,
   FormControl,
@@ -13,10 +13,10 @@ import {
   makeStyles,
   MenuItem,
   Select,
-} from "@material-ui/core";
-import { DateTimePicker } from "@material-ui/pickers";
+} from '@material-ui/core';
+import { DateTimePicker } from '@material-ui/pickers';
 
-const tMainValue = "tasks_task-type.9.task_details";
+const tMainValue = 'tasks_task-type.9.task_details';
 
 export default ({ data, closeTask }) => {
   const { buttons, id } = data;
@@ -29,25 +29,22 @@ export default ({ data, closeTask }) => {
       id,
       name,
       params,
-      action: "setTaskToBot",
+      action: 'setTaskToBot',
     });
     enqueueSnackbarTemplates(res);
     closeTask();
   };
 
   const configTime = [10, 15, 20, 25, 30, 35, 40];
-  const configHackrf = [
-    "Отключение клиентов от точки доступа",
-    "Глушение точки доступа",
-  ];
+  const configHackrf = ['Отключение клиентов от точки доступа', 'Глушение точки доступа'];
   const [params, setParams] = useState({
     date_fishing: null,
     time_fishing: null,
     hackrf: null,
   });
   const [selectedDateStart, handleDateChangeStart] = useState();
-  const [time, setTime] = useState("");
-  const [hackrf, setHackrf] = useState("");
+  const [time, setTime] = useState('');
+  const [hackrf, setHackrf] = useState('');
 
   const dateChange = (event) => {
     handleDateChangeStart(event);
@@ -66,9 +63,9 @@ export default ({ data, closeTask }) => {
     const value = event.target.value;
     setHackrf(value);
     let hackrf;
-    if (value === "Глушение точки доступа") {
+    if (value === 'Глушение точки доступа') {
       hackrf = true;
-    } else if (value === "Отключение клиентов от точки доступа") {
+    } else if (value === 'Отключение клиентов от точки доступа') {
       hackrf = false;
     } else hackrf = null;
     setParams({ ...params, hackrf });
@@ -96,17 +93,12 @@ export default ({ data, closeTask }) => {
             onChange={dateChange}
           />
 
-          <FormControl
-            variant="outlined"
-            fullWidth
-            className={classes.formControl}
-          >
+          <FormControl variant="outlined" fullWidth className={classes.formControl}>
             <InputLabel>Метод отключения пользователей от сети</InputLabel>
             <Select
               value={hackrf}
               onChange={hackrfChange}
-              label="Метод отключения пользователей от сети"
-            >
+              label="Метод отключения пользователей от сети">
               {configHackrf.map((el) => (
                 <MenuItem key={el} value={el}>
                   {el}
@@ -114,28 +106,21 @@ export default ({ data, closeTask }) => {
               ))}
             </Select>
 
-            {hackrf && hackrf === "Глушение точки доступа" && (
-              <FormHelperText>
-                Может повлиять на другие точки доступа
-              </FormHelperText>
+            {hackrf && hackrf === 'Глушение точки доступа' && (
+              <FormHelperText>Может повлиять на другие точки доступа</FormHelperText>
             )}
           </FormControl>
           {buttons.map((el) => (
             <Button
               key={el.name}
               onClick={() => handlerClickBtn(el.name)}
-              variant="outlined"
-            >
+              variant="outlined">
               {t(`task_actions.${el.name}`)}
             </Button>
           ))}
         </Grid>
         <Grid className={classes.colRight} item xs={6}>
-          <FormControl
-            className={classes.formControl}
-            variant="outlined"
-            fullWidth
-          >
+          <FormControl className={classes.formControl} variant="outlined" fullWidth>
             <InputLabel>Длительность</InputLabel>
             <Select value={time} onChange={timeChange} label="Длительность">
               {configTime.map((el) => (
@@ -162,6 +147,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(3),
   },
   red: {
-    color: "red",
+    color: 'red',
   },
 }));

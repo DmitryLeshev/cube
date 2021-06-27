@@ -1,10 +1,10 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
-import { Section, Text, Title } from "../../components";
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import { Section, Text, Title } from '../../components';
 
 export default ({ data, closeTask, children }) => {
   const classes = useStyles();
-  const isBasePage = data?.body?.type === "BasePage";
+  const isBasePage = data?.body?.type === 'BasePage';
   const basePageText = `При запросе страницы «${data?.body?.url}» был обнаружен вывод серверных ошибок. Вывод ошибок необходимо убрать во избежание использования их злоумышленником для раскрытия паролей, серверных путей файловой системы и т.д.`;
   return (
     <>

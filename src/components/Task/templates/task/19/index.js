@@ -1,4 +1,4 @@
-import Actions from "./Actions";
-import Template from "./Template";
+import Actions from './Actions';
+import Template from './Template';
 
 export { Actions, Template };

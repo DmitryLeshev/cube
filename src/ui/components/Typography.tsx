@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
-import { Typography, TypographyProps } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
-interface Props extends TypographyProps {}
+interface Props {}
 
-export default function T(props: Props) {
+export default function (props: any) {
   return <Typography {...props} />;
 }

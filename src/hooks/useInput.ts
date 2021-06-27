@@ -1,12 +1,9 @@
 import { useState } from 'react';
 
-interface Props {
-  initialValue?: any;
-}
-export default ({ initialValue }: Props) => {
-  const [value, setValue] = useState(initialValue);
+export default ({ initialValue }: any) => {
+  const [value, setValue] = useState<string>(initialValue ?? '');
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function onChange(event?: React.ChangeEvent<HTMLInputElement>) {
     if (!event) return '';
     setValue(event.target.value);
   }

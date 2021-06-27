@@ -1,22 +1,22 @@
-import React from "react";
-import { useParams } from "react-router";
-import { Button, makeStyles } from "@material-ui/core";
-import { useCustomSnackbar } from "../../../../../assets/hooks";
+import React from 'react';
+import { useParams } from 'react-router';
+import { Button, makeStyles } from '@material-ui/core';
+import { useCustomSnackbar } from '../../../../../assets/hooks';
 
 export default ({ api, closeTask, fetchTask, children, data }) => {
   const { taskId: id } = useParams();
   const classes = useStyles();
   const { enqueueSnackbar } = useCustomSnackbar();
 
-  const vBtns = { variant: "outlined", className: classes.btn };
+  const vBtns = { variant: 'outlined', className: classes.btn };
   const { setDecision, closeIncident } = api.task.button;
 
   async function close() {
     const res = await closeIncident({
       id: Number(id),
-      comment: "test",
+      comment: 'test',
     });
-    enqueueSnackbar(res, "tasks");
+    enqueueSnackbar(res, 'tasks');
     fetchTask();
     closeTask();
   }
@@ -26,10 +26,10 @@ export default ({ api, closeTask, fetchTask, children, data }) => {
   async function allow() {
     const res = await setDecision({
       id: Number(id),
-      action: "setTaskToBot",
+      action: 'setTaskToBot',
       params: { incedId: Number(id) },
     });
-    enqueueSnackbar(res, "tasks");
+    enqueueSnackbar(res, 'tasks');
     fetchTask();
   }
 
@@ -51,7 +51,7 @@ export default ({ api, closeTask, fetchTask, children, data }) => {
 const useStyles = makeStyles((theme) => ({
   list: {
     marginBottom: theme.spacing(3),
-    listStyle: "none",
+    listStyle: 'none',
     border: `1px solid ${theme.palette.divider}`,
   },
   btn: { marginRight: theme.spacing(2) },

@@ -1,8 +1,8 @@
-import React from "react";
-import { ListItemAvatar, ListItemText, Typography } from "@material-ui/core";
-import clsx from "clsx";
-import { EntryIcon } from ".";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
+import clsx from 'clsx';
+import { EntryIcon } from '.';
+import { Link } from 'react-router-dom';
 
 const Services = ({ classes, services, taskId }) => {
   const { iconType, primary, secondary, message } = services;

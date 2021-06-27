@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from '@material-ui/core';
 
 // import api from "../../../api";
 
 export default ({ data, closeTask }) => {
   const classes = useStyles();
-  const isWindows = data?.body?.protocol === "WINDOWS";
+  const isWindows = data?.body?.protocol === 'WINDOWS';
 
   async function handleBtn() {
     closeTask();
@@ -17,8 +17,7 @@ export default ({ data, closeTask }) => {
       className={classes.btn}
       variant="outlined"
       color="primary"
-      onClick={handleBtn}
-    >
+      onClick={handleBtn}>
       Перепроверить
     </Button>
   ) : null;

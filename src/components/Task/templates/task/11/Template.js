@@ -1,22 +1,22 @@
-import React from "react";
-import { useParams } from "react-router";
+import React from 'react';
+import { useParams } from 'react-router';
 
-import { Button, makeStyles, Typography } from "@material-ui/core";
+import { Button, makeStyles, Typography } from '@material-ui/core';
 
-import { Section, Text, Title } from "../../components";
-import { useTranslationTemplates, useSnackbarTemplates } from "../../lib";
+import { Section, Text, Title } from '../../components';
+import { useTranslationTemplates, useSnackbarTemplates } from '../../lib';
 
-import api from "../../../api";
+import api from '../../../api';
 
 export default ({ data, closeTask }) => {
   const { id } = data;
   const classes = useStyles();
 
   const { status } = useParams();
-  const inWork = status === "in-work";
-  const isCompleted = status === "completed";
+  const inWork = status === 'in-work';
+  const isCompleted = status === 'completed';
 
-  const params = data?.body?.params ?? "default";
+  const params = data?.body?.params ?? 'default';
 
   const { getText, getTitle } = useTranslationTemplates({
     number: data.type,
@@ -38,10 +38,8 @@ export default ({ data, closeTask }) => {
       </Section>
       {isCompleted && (
         <Typography>
-          Выбрано:{" "}
-          {params.off
-            ? "“Отключать пользователей”"
-            : "“Ждать нового подключения”"}
+          Выбрано:{' '}
+          {params.off ? '“Отключать пользователей”' : '“Ждать нового подключения”'}
         </Typography>
       )}
       {inWork && (
@@ -49,15 +47,13 @@ export default ({ data, closeTask }) => {
           <Button
             className={classes.btn}
             onClick={() => handlerButton(true)}
-            variant="outlined"
-          >
+            variant="outlined">
             Отключать пользователей
           </Button>
           <Button
             className={classes.btn}
             onClick={() => handlerButton(false)}
-            variant="outlined"
-          >
+            variant="outlined">
             Ждать нового подключения
           </Button>
         </div>
@@ -68,13 +64,13 @@ export default ({ data, closeTask }) => {
 
 const useStyles = makeStyles((theme) => ({
   buttons: {
-    display: "flex",
+    display: 'flex',
     padding: theme.spacing(2, 0),
   },
   btn: {
     marginRight: theme.spacing(3),
 
-    "&:last-child": {
+    '&:last-child': {
       marginRight: 0,
     },
   },

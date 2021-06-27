@@ -28,9 +28,12 @@ export default memo(function TabInfo({ route, className }: Props) {
         const list: { label: string }[] = t(`devices:info.${card}.list`, {
           returnObjects: true,
         });
-        const items = list.map((item, idx) => {
-          return { key: item.label, value: String(idx + 1) };
-        });
+        console.log({ list, card });
+        const items = Array.isArray(list)
+          ? list.map((item, idx) => {
+              return { key: item.label, value: String(idx + 1) };
+            })
+          : [];
         const header = (
           <>
             <Typography variant="h4">{t(`devices:info.${card}.title`)}</Typography>
@@ -46,11 +49,15 @@ export default memo(function TabInfo({ route, className }: Props) {
       })}
       <Card
         header={<Typography variant="h4">{t(`devices:info.agent.title`)}</Typography>}
-        footer={agentActions.map((action) => (
-          <Button className={classes.btn} fullWidth key={action.label}>
-            {action.label}
-          </Button>
-        ))}
+        footer={
+          Array.isArray(agentActions)
+            ? agentActions.map((action) => (
+                <Button className={classes.btn} fullWidth key={action.label}>
+                  {action.label}
+                </Button>
+              ))
+            : null
+        }
       />
     </div>
   );

@@ -1,9 +1,11 @@
-export const hh_mm_DD_MM_YYYY = 'hh:mm DD.MM.YYYY';
-export const DD_MM_YYYY = 'DD.MM.YYYY';
-export const hh_mm = 'hh:mm';
-export const hh_mm_ss = 'hh:mm:ss';
+export const hh_mm_DD_MM_YYYY: Variant = 'hh:mm DD.MM.YYYY';
+export const DD_MM_YYYY: Variant = 'DD.MM.YYYY';
+export const hh_mm: Variant = 'hh:mm';
+export const hh_mm_ss: Variant = 'hh:mm:ss';
 
-enum Variant {
+type Variant = 'hh:mm DD.MM.YYYY' | 'DD.MM.YYYY' | 'hh:mm' | 'hh:mm:ss';
+
+enum Variants {
   hh_mm_DD_MM_YYYY = 'hh:mm DD.MM.YYYY',
   DD_MM_YYYY = 'DD.MM.YYYY',
   hh_mm = 'hh:mm',

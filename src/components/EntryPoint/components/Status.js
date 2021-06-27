@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { ListItemText, Typography } from "@material-ui/core";
-import clsx from "clsx";
+import { ListItemText, Typography } from '@material-ui/core';
+import clsx from 'clsx';
 
 const Status = ({ classes, status, id, refreshData }) => {
   const { primary, secondary, action, btnLabel } = status;
@@ -24,8 +24,7 @@ const Status = ({ classes, status, id, refreshData }) => {
           onClick={async () => {
             action({ id });
             refreshData();
-          }}
-        >
+          }}>
           {btnLabel}
         </p>
       </div>

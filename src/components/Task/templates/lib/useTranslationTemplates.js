@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 export default ({ tMain, number }) => {
   const { t } = useTranslation();
@@ -6,8 +6,7 @@ export default ({ tMain, number }) => {
 
   const getTitle = (i) => t(`${tMainValue}.detail_title_${i}`);
 
-  const getText = (i, variables) =>
-    t(`${tMainValue}.detail_description_${i}`, variables);
+  const getText = (i, variables) => t(`${tMainValue}.detail_description_${i}`, variables);
 
   const getTextSecondary = (i, variables) =>
     t(`${tMainValue}.detail_description_${i}_secondary`, variables);

@@ -1,5 +1,5 @@
-import { arrayItems } from "./";
-import { List, ListItem } from "../components";
+import { arrayItems } from './';
+import { List, ListItem } from '../components';
 
 export default ({ variant, i, quantity, text, variables }) => (
   <List dots="none">

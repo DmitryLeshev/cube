@@ -8,6 +8,7 @@ import { Page } from '@/components';
 import { ITheme } from '@/types/theme';
 
 import { Tasks, TopTasks, Internet, Network, Ports } from './components';
+import { ScrollableContentiner } from '@/ui/components';
 
 interface Props {
   route: any;
@@ -19,14 +20,16 @@ export default memo(function Home({ route }: Props) {
 
   return (
     <Page title={t('home:page')}>
-      <div className={classes.temlate}>
-        <Tasks data={{}} />
-        <TopTasks isIncident={false} tasks={[]} />
-        <TopTasks isIncident={true} tasks={[]} />
-        <Internet />
-        <Network />
-        <Ports />
-      </div>
+      <ScrollableContentiner>
+        <div className={classes.temlate}>
+          <Tasks data={{}} />
+          <TopTasks isIncident={false} tasks={[]} />
+          <TopTasks isIncident={true} tasks={[]} />
+          <Internet />
+          <Network />
+          <Ports />
+        </div>
+      </ScrollableContentiner>
       {renderRoutes(route.routes)}
     </Page>
   );

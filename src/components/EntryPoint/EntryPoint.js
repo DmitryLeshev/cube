@@ -1,6 +1,6 @@
-import React from "react";
-import { ListItem, makeStyles } from "@material-ui/core";
-import { Logins, Checks, Services, Status } from "./components";
+import React from 'react';
+import { ListItem, makeStyles } from '@material-ui/core';
+import { Logins, Checks, Services, Status } from './components';
 
 const EntryPoint = (props) => {
   const { services, logins, checks, status, refreshData, el } = props;
@@ -70,72 +70,72 @@ const useStyles = makeStyles((theme) => ({
   mb1: {
     marginBottom: theme.spacing(1),
 
-    "&:last-child": {
+    '&:last-child': {
       marginBottom: 0,
     },
   },
   mb2: {
     marginBottom: theme.spacing(2),
 
-    "&:last-child": {
+    '&:last-child': {
       marginBottom: 0,
     },
   },
   mdash: {
-    display: "flex",
-    width: "100%",
+    display: 'flex',
+    width: '100%',
     // alignItems: "center"
-    textAlign: "center",
-    justifyContent: "center",
+    textAlign: 'center',
+    justifyContent: 'center',
   },
   rel: {
-    position: "relative",
+    position: 'relative',
   },
   col: {
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
     marginLeft: theme.spacing(3),
 
-    "&:first-child": {
+    '&:first-child': {
       marginLeft: theme.spacing(0),
     },
 
-    "&:first-last": {
+    '&:first-last': {
       marginRight: theme.spacing(0),
     },
   },
   colService: {
-    minWidth: "310px",
+    minWidth: '310px',
   },
   colLogins: {
-    minWidth: "150px",
+    minWidth: '150px',
   },
   colStatus: {
-    minWidth: "310px",
+    minWidth: '310px',
   },
   colChecks: {
-    minWidth: "310px",
+    minWidth: '310px',
   },
   row: {
-    position: "relative",
-    display: "flex",
-    alignItems: "center",
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
   },
   item: {
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     margin: theme.spacing(2, 0),
     padding: theme.spacing(1.5, 3),
     background: theme.palette.background.paper,
     boxShadow: theme.shadows[3],
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
     minHeight: 150,
 
-    "&:first-child": {
+    '&:first-child': {
       marginTop: theme.spacing(0),
     },
 
-    "&:last-child": {
+    '&:last-child': {
       marginBottom: theme.spacing(0),
     },
   },
@@ -152,12 +152,12 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: theme.palette.text.primary,
-    textDecoration: "none",
-    transition: "all 0.3s",
-    cursor: "pointer",
+    textDecoration: 'none',
+    transition: 'all 0.3s',
+    cursor: 'pointer',
 
-    "&:hover": {
-      textDecoration: "underline",
+    '&:hover': {
+      textDecoration: 'underline',
     },
   },
   blue: {
@@ -165,17 +165,17 @@ const useStyles = makeStyles((theme) => ({
   },
   statusLink: {
     color: theme.palette.text.secondary,
-    textDecoration: "none",
-    cursor: "pointer",
+    textDecoration: 'none',
+    cursor: 'pointer',
     transition: `all 1s`,
 
-    "&:hover": {
-      textDecoration: "underline",
+    '&:hover': {
+      textDecoration: 'underline',
       color: theme.palette.grey[700],
     },
   },
   logins: {
-    lineHeight: "18px",
+    lineHeight: '18px',
   },
 }));
 

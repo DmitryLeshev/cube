@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 import {
   Button,
@@ -7,18 +7,18 @@ import {
   InputAdornment,
   makeStyles,
   OutlinedInput,
-} from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
+} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
-import api from "../../../api";
-import { useCustomSnackbar } from "../../../../../assets/hooks";
-import { useParams } from "react-router";
+import api from '../../../api';
+import { useCustomSnackbar } from '../../../../../assets/hooks';
+import { useParams } from 'react-router';
 
 const RenderTextField = ({ id, items, setItems, addItem, removeItem }) => {
   const classes = useStyles();
   const [remove, setRemove] = useState(false);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const Icon = remove ? RemoveIcon : AddIcon;
 
   const handlerChange = (e) => {
@@ -67,14 +67,14 @@ export default ({ data, closeTask, children }) => {
   const { enqueueSnackbar } = useCustomSnackbar();
 
   const { status } = useParams();
-  const inWork = status === "in-work";
+  const inWork = status === 'in-work';
 
-  const initionState = [{ id: Math.random() + 1, value: "" }];
+  const initionState = [{ id: Math.random() + 1, value: '' }];
   const [items, setItems] = useState(initionState);
   const addItem = () => {
     const newItem = {
       id: Math.random() + 1,
-      value: "",
+      value: '',
     };
     setItems([...items, newItem]);
   };
@@ -91,7 +91,7 @@ export default ({ data, closeTask, children }) => {
       action: name,
       params,
     });
-    enqueueSnackbar(res, "tasks");
+    enqueueSnackbar(res, 'tasks');
     closeTask();
     setItems(initionState);
   };
@@ -99,7 +99,7 @@ export default ({ data, closeTask, children }) => {
   const loginList = (logins) => (
     <div>
       <h3> Введенные логины:</h3>
-      {logins.split("\n").map((el, idx) => {
+      {logins.split('\n').map((el, idx) => {
         return <p key={idx}>{el}</p>;
       })}
     </div>
@@ -128,10 +128,9 @@ export default ({ data, closeTask, children }) => {
             let text = items.map((i) => {
               return i.value;
             });
-            console.log(text.join("\n"));
-            handlerButton("setLogins", { logins: text.join("\n") });
-          }}
-        >
+            console.log(text.join('\n'));
+            handlerButton('setLogins', { logins: text.join('\n') });
+          }}>
           Отправить
         </Button>
       )}
@@ -143,8 +142,7 @@ export default ({ data, closeTask, children }) => {
       {children && children}
       <div>
         <p className={classes.text}>
-          ip-адрес {data.body.ip}:{data.body.port}, протокол{" "}
-          {data.body.protocol}
+          ip-адрес {data.body.ip}:{data.body.port}, протокол {data.body.protocol}
         </p>
       </div>
       {data.body.logins != null ? loginList(data.body.logins) : form()}
@@ -154,15 +152,15 @@ export default ({ data, closeTask, children }) => {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     flexGrow: 1,
     padding: theme.spacing(3),
   },
   col: {
-    display: "flex",
-    flexDirection: "column",
-    width: "50%",
+    display: 'flex',
+    flexDirection: 'column',
+    width: '50%',
   },
   mb3: {
     marginBottom: theme.spacing(3),
@@ -172,6 +170,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   btn: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
 }));

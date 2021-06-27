@@ -1,10 +1,10 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from '@material-ui/core';
 
-import api from "../../../api";
-import { useCustomSnackbar } from "../../../../../assets/hooks";
+import api from '../../../api';
+import { useCustomSnackbar } from '../../../../../assets/hooks';
 
 export default ({ data, closeTask }) => {
   const { status, id } = data;
@@ -14,11 +14,11 @@ export default ({ data, closeTask }) => {
 
   const handlerButton = async (name, params = []) => {
     const res = await api.task.button.setDecision({ id, action: name, params });
-    enqueueSnackbar(res, "tasks");
+    enqueueSnackbar(res, 'tasks');
     closeTask();
   };
 
-  const isWindows = String(data?.titleVars?.softName).startsWith("Windows");
+  const isWindows = String(data?.titleVars?.softName).startsWith('Windows');
 
   return (
     status <= 2 && (
@@ -27,8 +27,7 @@ export default ({ data, closeTask }) => {
           className={classes.action}
           variant="outlined"
           color="secondary"
-          onClick={() => handlerButton("updateSoft")}
-        >
+          onClick={() => handlerButton('updateSoft')}>
           {t(`task_actions.updateSoft`)}
         </Button>
         {!isWindows && (
@@ -36,8 +35,7 @@ export default ({ data, closeTask }) => {
             className={classes.action}
             variant="outlined"
             color="secondary"
-            onClick={() => handlerButton("updateSoft")}
-          >
+            onClick={() => handlerButton('updateSoft')}>
             {t(`task_actions.deleteSoft`)}
           </Button>
         )}

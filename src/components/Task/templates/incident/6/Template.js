@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Button, makeStyles } from "@material-ui/core";
-import { useParams } from "react-router";
-import { useCustomSnackbar } from "../../../../../assets/hooks";
+import { Button, makeStyles } from '@material-ui/core';
+import { useParams } from 'react-router';
+import { useCustomSnackbar } from '../../../../../assets/hooks';
 
 export default ({ api, children, data, fetchTask }) => {
   const { taskId: id } = useParams();
@@ -15,20 +15,20 @@ export default ({ api, children, data, fetchTask }) => {
   async function toBegin() {
     const res = await setDecision({
       id: Number(id),
-      action: "arpCargeStart",
+      action: 'arpCargeStart',
       params: { incedId: Number(id) },
     });
-    enqueueSnackbar(res, "tasks");
+    enqueueSnackbar(res, 'tasks');
     fetchTask();
   }
 
   async function stop() {
     const res = await setDecision({
       id: Number(id),
-      action: "arpCargeStop",
+      action: 'arpCargeStop',
       params: { incedId: Number(id) },
     });
-    enqueueSnackbar(res, "tasks");
+    enqueueSnackbar(res, 'tasks');
     fetchTask();
   }
 
@@ -52,7 +52,7 @@ export default ({ api, children, data, fetchTask }) => {
 
 const useStyles = makeStyles((theme) => ({
   actions: {
-    display: "flex",
+    display: 'flex',
   },
   btn_fisrt: { marginRight: theme.spacing(2) },
 }));

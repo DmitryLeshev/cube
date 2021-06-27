@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Tabs, Tab, makeStyles } from "@material-ui/core";
-import DetailCardTab from "./DetailCardTab";
+import { Tabs, Tab, makeStyles } from '@material-ui/core';
+import DetailCardTab from './DetailCardTab';
 
 const DetailCardTabsBody = ({ tabsConfig }) => {
   const classes = useStyles();
@@ -21,8 +21,7 @@ const DetailCardTabsBody = ({ tabsConfig }) => {
         indicatorColor="primary"
         textColor="primary"
         variant="scrollable"
-        scrollButtons="auto"
-      >
+        scrollButtons="auto">
         {tabsConfig.map((tabDetails) => (
           <Tab key={tabDetails.value} label={tabDetails.label} />
         ))}
@@ -40,21 +39,21 @@ const DetailCardTabsBody = ({ tabsConfig }) => {
 
 const useStyles = makeStyles((theme) => ({
   tabs: {
-    position: "relative",
-    display: "flex",
-    margin: "0",
+    position: 'relative',
+    display: 'flex',
+    margin: '0',
     background: theme.palette.background.paper,
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   tabsWrapper: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     flexGrow: 1,
-    width: "calc(100% - 270px)",
+    width: 'calc(100% - 270px)',
     borderRight: `1px solid ${theme.palette.divider}`,
   },
   tabsSidebar: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 10,
     top: 0,
     bottom: 0,
@@ -63,12 +62,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   containerTab: {
-    position: "relative",
+    position: 'relative',
     zIndex: 600,
     flexGrow: 1,
     minHeight: 300,
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     background: theme.palette.background.paper,
   },
   tab: {

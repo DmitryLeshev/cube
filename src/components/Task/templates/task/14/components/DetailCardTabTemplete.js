@@ -1,9 +1,9 @@
-import { makeStyles, Typography } from "@material-ui/core";
-import React from "react";
+import { makeStyles, Typography } from '@material-ui/core';
+import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
   template: {
-    height: "100%",
+    height: '100%',
     padding: theme.spacing(2),
   },
   text: {

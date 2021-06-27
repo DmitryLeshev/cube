@@ -5,6 +5,7 @@ import { countReducer } from './count';
 import { todosReducer } from './todo';
 import { userReducer } from './user';
 import { deviceReducer } from './device';
+import { chatReducer } from './chat';
 
 export const reducers = combineReducers({
   user: userReducer,
@@ -12,6 +13,7 @@ export const reducers = combineReducers({
   app: appReducer,
   count: countReducer,
   device: deviceReducer,
+  chat: chatReducer,
 });
 
 export type RootState = ReturnType<typeof reducers>;

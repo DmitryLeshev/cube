@@ -1,10 +1,12 @@
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
+
 import { createStyles, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
 import { useTypedSelector } from '@/hooks';
+import { ScrollableContentiner } from '@/ui/components';
 import { ITheme } from '@/types/theme';
+
 import navigationConfig from './navigationConfig';
 import Navigation from './Navigation';
 interface Props {}
@@ -14,20 +16,22 @@ export default memo(function Sidebar({}: Props) {
   const classes = useStyles();
   return (
     <div className={clsx(classes.navbar, { [classes.navbarShift]: state.app.navbar })}>
-      <div className={classes.navigation}>
-        {navigationConfig(state).map((list: any) => (
-          <Navigation
-            taskCounter={{
-              countAttacks: 1,
-              countTasks: 1,
-            }}
-            component="nav"
-            key={list.title}
-            pages={list.pages}
-            title={list.title}
-          />
-        ))}
-      </div>
+      <ScrollableContentiner>
+        <div className={classes.navigation}>
+          {navigationConfig(state).map((list: any) => (
+            <Navigation
+              taskCounter={{
+                countAttacks: 1,
+                countTasks: 1,
+              }}
+              component="nav"
+              key={list.title}
+              pages={list.pages}
+              title={list.title}
+            />
+          ))}
+        </div>
+      </ScrollableContentiner>
     </div>
   );
 });

@@ -1,32 +1,32 @@
-import React from "react";
+import React from 'react';
 
-import { Typography } from "@material-ui/core";
-import Table from "@src/components/Table/Table";
-import whenWasOnline from "@src/assets/utils/whenWasOnline";
+import { Typography } from '@material-ui/core';
+import Table from '@src/components/Table/Table';
+import whenWasOnline from '@src/assets/utils/whenWasOnline';
 
 export default ({ data }) => {
   const cells = [
     {
-      id: "deviceInfo",
-      label: "Устройство",
+      id: 'deviceInfo',
+      label: 'Устройство',
       deviceInfo: true,
     },
     {
-      id: "userInfo",
-      label: "Пользователи",
+      id: 'userInfo',
+      label: 'Пользователи',
       userInfo: true,
     },
     {
-      id: "didOpen",
-      label: "Открытие фишинг страницы",
+      id: 'didOpen',
+      label: 'Открытие фишинг страницы',
     },
     {
-      id: "tryingEnter",
-      label: "Попытка ввода пароля",
+      id: 'tryingEnter',
+      label: 'Попытка ввода пароля',
     },
     {
-      id: "enteredPwds",
-      label: "Введенные пароли",
+      id: 'enteredPwds',
+      label: 'Введенные пароли',
     },
   ];
 
@@ -50,24 +50,23 @@ export default ({ data }) => {
                 ? `${el.owner.firstname} ${el.owner.lastname}`
                 : el.owner.login,
             secondary:
-              typeof el.owner.online === "number"
+              typeof el.owner.online === 'number'
                 ? whenWasOnline(el.owner.online)
-                : "В сети",
+                : 'В сети',
             url: (id) => `/users/${id}/information`,
           }
-        : "",
-      didOpen: el.join_site ? "Да" : "Нет",
-      tryingEnter: el.input_password ? "Да" : "Нет",
-      enteredPwds: el.passwords.join(", "),
+        : '',
+      didOpen: el.join_site ? 'Да' : 'Нет',
+      tryingEnter: el.input_password ? 'Да' : 'Нет',
+      enteredPwds: el.passwords.join(', '),
     };
   });
 
   return (
     <>
       <Typography variant="h5" paragraph>
-        В результате проведения тестирование сотрудников компании, работающих
-        через WI-FI, на реакцию на фишинг атаку, были выявлены следующие
-        результаты:
+        В результате проведения тестирование сотрудников компании, работающих через WI-FI,
+        на реакцию на фишинг атаку, были выявлены следующие результаты:
       </Typography>
       <Table list={list} cellsName={cells} />
     </>

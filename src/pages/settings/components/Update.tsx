@@ -132,7 +132,8 @@ const Body = ({
           )}
       </ListItem>
       <ListItem className={classes.item} disableGutters>
-        <Typography variant="h5">Состояние: {UPDATE[updatecheck]}</Typography>
+        <Typography variant="h5">Состояние: </Typography>
+        {/* <Typography variant="h5">Состояние: {UPDATE[updatecheck]}</Typography> */}
         <Button className={classes.btn}>Проверить обновление</Button>
       </ListItem>
     </List>
@@ -165,5 +166,8 @@ const useStyles = makeStyles((theme: ITheme) =>
   createStyles({
     card: { gridArea: 'update' },
     btn: { marginLeft: 'auto' },
+    formControl: {},
+    mr_r2: {},
+    item: {},
   }),
 );

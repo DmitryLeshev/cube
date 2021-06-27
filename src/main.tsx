@@ -14,6 +14,7 @@ import App from './App';
 
 import './lib/i18n';
 import './styles/index.css';
+import 'simplebar/dist/simplebar.min.css';
 
 const app = (
   <Provider store={store}>

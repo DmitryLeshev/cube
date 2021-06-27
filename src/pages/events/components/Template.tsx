@@ -5,6 +5,7 @@ import { renderRoutes } from 'react-router-config';
 import { createStyles, makeStyles } from '@material-ui/core';
 
 import { Page, Tabs } from '@/components';
+import { ScrollableContentiner } from '@/ui/components';
 import { ListItem, useOpenTask } from '@/components/Task';
 import { useTabs } from '@/hooks';
 import { ITheme } from '@/types/theme';
@@ -30,7 +31,7 @@ export interface ITask {
   entityId: number;
   entityType: number;
   typeIco: number;
-  titleVars: string[];
+  titleVars: any;
   status: number;
 }
 
@@ -65,12 +66,12 @@ export default memo(function Events({ route, type }: Props) {
         {renderTabs}
         <Filter className={classes.fltr} />
         <div className={classes.list}>
-          <div className={classes.scroll}>
+          <ScrollableContentiner>
             {mock.map((task: ITask) => {
               const props = { task, openTask };
-              return <ListItem {...props} />;
+              return <ListItem key={task.id} {...props} />;
             })}
-          </div>
+          </ScrollableContentiner>
         </div>
         {renderRoutes(route.routes, { open, closeTask, updateItem })}
       </div>
@@ -81,20 +82,25 @@ export default memo(function Events({ route, type }: Props) {
 const useStyles = makeStyles((theme: ITheme) =>
   createStyles({
     template: ({ gridName: gn }: any) => ({
-      display: 'grid',
       flexGrow: 1,
+      display: 'grid',
       padding: theme.spacing(1.5, 3),
       gridTemplateAreas: `
         "${gn} ${gn} ${gn} ${gn} fltr fltr"
         "list list list list fltr fltr"
       `,
       gridTemplateColumns: 'repeat(4, 1fr) min-content min-content',
-      gridTemplateRows: 'min-content 1fr',
+      gridTemplateRows: 'max-content 1fr',
       gap: theme.spacing(3),
     }),
     tabs: { gridArea: 'tabs', margin: theme.spacing(0, 3) },
     fltr: { gridArea: 'fltr' },
-    list: { gridArea: 'list', overflow: 'auto', position: 'relative' },
+    list: {
+      gridArea: 'list',
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+    },
     scroll: {
       position: 'absolute',
       display: 'flex',

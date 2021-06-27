@@ -2,8 +2,8 @@ import { createStyles, makeStyles } from '@material-ui/core';
 import React, { memo } from 'react';
 import { renderRoutes, RouteConfig } from 'react-router-config';
 
-import { Topbar, Settingbar } from '../../components';
-import { ITheme } from '../../types/theme/theme';
+import { Topbar, Settingbar } from '@/components';
+import { ITheme } from '@/types/theme';
 
 interface Props {
   route: RouteConfig;

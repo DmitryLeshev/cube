@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 
-import { ListItem, ListItemProps } from '@material-ui/core';
+import { ListItem } from '@material-ui/core';
 
-interface Props extends ListItemProps {}
+interface Props {}
 
-export default function UIListItem(props: Props): ReactElement {
+export default function UIListItem(props: any): ReactElement {
   return <ListItem {...props} />;
 }

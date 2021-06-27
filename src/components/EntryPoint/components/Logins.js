@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import { Typography } from "@material-ui/core";
-import clsx from "clsx";
+import { Typography } from '@material-ui/core';
+import clsx from 'clsx';
 
-import { useCustomModal } from "../../../assets/hooks";
+import { useCustomModal } from '../../../assets/hooks';
 
-import EntryModal from "./EntryModal";
-import EditLogins from "./EditLogins";
-import Edit from "../../Edit/Edit";
-import { Tooltip } from "../..";
+import EntryModal from './EntryModal';
+import EditLogins from './EditLogins';
+import Edit from '../../Edit/Edit';
+import { Tooltip } from '../..';
 
 const Logins = ({ classes, logins, apID, loginsString, refreshData }) => {
   // eslint-disable-next-line
@@ -17,9 +17,9 @@ const Logins = ({ classes, logins, apID, loginsString, refreshData }) => {
 
   const link = (
     <>
-      и{" "}
+      и{' '}
       <span className={clsx(classes.link, classes.blue)} onClick={openModal}>
-        {list.length - 4 === 1 ? "ещё один" : `${list.length - 5} других`}
+        {list.length - 4 === 1 ? 'ещё один' : `${list.length - 5} других`}
       </span>
     </>
   );
@@ -40,9 +40,7 @@ const Logins = ({ classes, logins, apID, loginsString, refreshData }) => {
 
   return (
     <div className={clsx(classes.col, classes.colLogins)}>
-      {action && (
-        <Edit styles={{ top: -16, right: 0 }} handleEdit={openModal} />
-      )}
+      {action && <Edit styles={{ top: -16, right: 0 }} handleEdit={openModal} />}
       <Typography variant="h3">{primary}:</Typography>
       <Typography className={classes.logins} variant="body1">
         {list?.length
@@ -53,9 +51,9 @@ const Logins = ({ classes, logins, apID, loginsString, refreshData }) => {
                   {/* {idx !== 4 && ","} */}
                   <br />
                 </React.Fragment>
-              ) : null
+              ) : null,
             )
-          : "нет логинов"}
+          : 'нет логинов'}
         <Typography className={classes.span} variant="body2" component="span">
           {list.length > 4 && link}
         </Typography>

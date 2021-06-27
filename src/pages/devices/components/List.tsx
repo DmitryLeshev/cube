@@ -12,7 +12,7 @@ import {
 import clsx from 'clsx';
 
 import { DeviceIcon } from '@/components';
-import { Typography } from '@/ui/components';
+import { ScrollableContentiner, Typography } from '@/ui/components';
 import { ITheme } from '@/types/theme';
 import { ItemDevice } from '@/store/types/device';
 
@@ -26,32 +26,34 @@ export default memo(function DeviceList({ list }: Props) {
   console.log('[render] DeviceList');
   return (
     <List className={clsx(classes.list)}>
-      {list.map((device: ItemDevice) => {
-        const isActive: boolean = Number(id) === device.id;
-        return (
-          <ListItem
-            className={clsx(classes.item, { [classes.active]: isActive })}
-            button
-            component={Link}
-            to={`/devices/local/${device.id}/info`}
-            key={device.id}>
-            <ListItemIcon>
-              <DeviceIcon className={classes.icon} type={device.type} />
-            </ListItemIcon>
-            <ListItemText
-              primary={<Typography noWrap>{device.name}</Typography>}
-              secondary={device.ip}
-            />
-          </ListItem>
-        );
-      })}
+      <ScrollableContentiner>
+        {list.map((device: ItemDevice) => {
+          const isActive: boolean = Number(id) === device.id;
+          return (
+            <ListItem
+              className={clsx(classes.item, { [classes.active]: isActive })}
+              button
+              component={Link}
+              to={`/devices/local/${device.id}/info`}
+              key={device.id}>
+              <ListItemIcon>
+                <DeviceIcon className={classes.icon} type={device.type} />
+              </ListItemIcon>
+              <ListItemText
+                primary={<Typography noWrap>{device.name}</Typography>}
+                secondary={device.ip}
+              />
+            </ListItem>
+          );
+        })}
+      </ScrollableContentiner>
     </List>
   );
 });
 
 const useStyles = makeStyles((theme: ITheme) =>
   createStyles({
-    list: { height: 1, flexGrow: 1, overflowY: 'auto' },
+    list: { height: 1, flexGrow: 1, display: 'flex', flexDirection: 'column' },
     item: { overflow: 'hidden' },
     active: {
       backgroundColor: theme.palette.action.selected,

@@ -1,10 +1,10 @@
-import React from "react";
-import { useParams } from "react-router";
+import React from 'react';
+import { useParams } from 'react-router';
 
-import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
+import { Button, Grid, makeStyles, Typography } from '@material-ui/core';
 // import { List, ListItem, Section, Text, Title } from "../../components";
 // eslint-disable-next-line
-import { useSnackbarTemplates, useTranslationTemplates } from "../../lib";
+import { useSnackbarTemplates, useTranslationTemplates } from '../../lib';
 
 export default ({ api, data, fetchTask, children }) => {
   const classes = useStyles();
@@ -69,10 +69,7 @@ export default ({ api, data, fetchTask, children }) => {
                 <Button
                   variant="outlined"
                   fullWidth
-                  onClick={() =>
-                    addWhiteList({ id, ip: el.ip, domain: el.domain })
-                  }
-                >
+                  onClick={() => addWhiteList({ id, ip: el.ip, domain: el.domain })}>
                   Добавить в белый список
                 </Button>
               ) : (
@@ -88,20 +85,20 @@ export default ({ api, data, fetchTask, children }) => {
 
 const useStyles = makeStyles((theme) => ({
   item: {
-    display: "flex",
+    display: 'flex',
     padding: theme.spacing(3, 0, 3, 2),
     borderBottom: `1px solid ${theme.palette.divider}`,
 
-    "&:first-child": {
-      background: "#eee",
+    '&:first-child': {
+      background: '#eee',
     },
 
-    "&:last-child": {
-      borderBottom: "none",
+    '&:last-child': {
+      borderBottom: 'none',
     },
   },
   grid: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
 }));

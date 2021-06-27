@@ -12,6 +12,10 @@ export default defineConfig({
         replacement: '@material-ui/icons/esm/$1',
       },
       {
+        find: /^@material-ui\/pickers\/(.*)/,
+        replacement: '@material-ui/pickers/esm/$1',
+      },
+      {
         find: /^@material-ui\/core\/(.+)/,
         replacement: '@material-ui/core/es/$1',
       },

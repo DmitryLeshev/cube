@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createStyles, makeStyles } from '@material-ui/core';
-
 import clsx from 'clsx';
 
 import { ITheme } from '@/types/theme';
@@ -44,7 +43,7 @@ const Filter = ({ className }: Props) => {
 
   const criticalityProps = { criticality, filter, handleСriticality };
   const deviceProps = { classes, device, filter, devices: [] };
-
+  const [selectedDate, handleDateChange] = useState(new Date());
   return (
     <div className={clsx(classes.filter, className)}>
       <div className={classes.scroll}>

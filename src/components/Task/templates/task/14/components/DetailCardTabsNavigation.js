@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Tabs, Tab, makeStyles } from "@material-ui/core";
+import { Tabs, Tab, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   tabs: {
-    position: "relative",
-    display: "flex",
-    margin: "0",
+    position: 'relative',
+    display: 'flex',
+    margin: '0',
     background: theme.palette.background.paper,
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
@@ -30,8 +30,7 @@ const DetailCardTabsNavigation = ({ setTabId, tabId, tabsConfig }) => {
       indicatorColor="primary"
       textColor="primary"
       variant="scrollable"
-      scrollButtons="auto"
-    >
+      scrollButtons="auto">
       {tabsConfig.map((tabDetails) => {
         return <Tab key={tabDetails.value} label={tabDetails.label} />;
       })}

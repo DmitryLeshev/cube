@@ -1,22 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
-import { Section, Text, Title, List, ListItem } from "../../components";
-import { useTranslationTemplates, renderList, arrayItems } from "../../lib";
-import dependencies from "../../../dependencies";
+import { Section, Text, Title, List, ListItem } from '../../components';
+import { useTranslationTemplates, renderList, arrayItems } from '../../lib';
+import dependencies from '../../../dependencies';
 
 const { transformTimestamp } = dependencies.date;
 const { DeviceIcon } = dependencies.icon;
 
 const HARDCODE = [
-  "Bully",
-  "Reaver",
-  "WiFi-autopwner",
-  "Pixie Dust",
-  "HT-WPS BREAKER",
-  "Dumpper",
+  'Bully',
+  'Reaver',
+  'WiFi-autopwner',
+  'Pixie Dust',
+  'HT-WPS BREAKER',
+  'Dumpper',
 ];
 
 export default ({ data }) => {
@@ -64,11 +64,10 @@ export default ({ data }) => {
       {getText(i)} <DeviceIcon type={data.entityType} />
       <Link
         className={classes.link}
-        to={`/devices/${
-          data?.deviceInfo?.entityType === 1 ? "local" : "wifi"
-        }/${data?.deviceInfo?.entityId}/information`}
-      >
-        {data.name || ""}
+        to={`/devices/${data?.deviceInfo?.entityType === 1 ? 'local' : 'wifi'}/${
+          data?.deviceInfo?.entityId
+        }/information`}>
+        {data.name || ''}
       </Link>
     </Text>
   );
@@ -96,11 +95,11 @@ export default ({ data }) => {
 const useStyles = makeStyles((theme) => ({
   link: {
     color: theme.palette.text.primary,
-    textDecoration: "none",
-    transition: "all 0.3s",
+    textDecoration: 'none',
+    transition: 'all 0.3s',
 
-    "&:hover": {
-      textDecoration: "underline",
+    '&:hover': {
+      textDecoration: 'underline',
     },
   },
   dots: {

@@ -1,10 +1,12 @@
 import React, { memo } from 'react';
 import { renderRoutes, RouteConfig } from 'react-router-config';
+
 import { createStyles, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
 import { useTypedSelector } from '@/hooks';
 import { Topbar, Navbar, Settingbar } from '@/components';
+import { ScrollableContentiner } from '@/ui/components';
 import { ITheme } from '@/types/theme';
 
 interface Props {
@@ -14,7 +16,6 @@ interface Props {
 export default memo(function Main({ route }: Props) {
   const classes = useStyles();
   const { navbar } = useTypedSelector((state) => state.app);
-
   return (
     <>
       <Topbar />
@@ -38,7 +39,6 @@ const useStyles = makeStyles((theme: ITheme) =>
       marginLeft: theme.drawer.closeWidth,
       background: theme.palette.background.default,
       transition: theme.drawer.transition,
-      overflow: 'auto',
     },
     mainShift: {
       width: `calc(100% - ${theme.drawer.openWidth}px)`,

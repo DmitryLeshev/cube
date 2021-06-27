@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core";
-import clsx from "clsx";
+import { makeStyles } from '@material-ui/core';
+import clsx from 'clsx';
 
 // {
 //   "subtitle": "Уязвимость",
@@ -19,14 +19,9 @@ export default ({ data, closeTask, children }) => {
           <p className={clsx(classes.text, classes.password)}>Пароли</p>
         </li>
         {data?.body?.map((item, idx) => (
-          <li
-            key={idx}
-            className={clsx(classes.item, { [classes.fixed]: item.fixed })}
-          >
+          <li key={idx} className={clsx(classes.item, { [classes.fixed]: item.fixed })}>
             <p className={clsx(classes.text, classes.login)}>{item.login}</p>
-            <p className={clsx(classes.text, classes.password)}>
-              {item.password}
-            </p>
+            <p className={clsx(classes.text, classes.password)}>{item.password}</p>
           </li>
         ))}
       </ul>
@@ -38,30 +33,30 @@ export default ({ data, closeTask, children }) => {
 const useStyles = makeStyles((theme) => ({
   list: {
     marginBottom: theme.spacing(3),
-    listStyle: "none",
+    listStyle: 'none',
     border: `1px solid ${theme.palette.divider}`,
   },
   item: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     borderBottom: `1px solid ${theme.palette.divider}`,
-    "&:last-child": {
-      borderBottom: "none",
+    '&:last-child': {
+      borderBottom: 'none',
     },
   },
   text: {
-    width: "50%",
+    width: '50%',
     padding: theme.spacing(2),
   },
   password: { borderLeft: `1px solid ${theme.palette.divider}` },
   fixed: {
-    position: "relative",
-    "&::after": {
+    position: 'relative',
+    '&::after': {
       content: '""',
-      position: "absolute",
-      display: "block",
-      width: "98%",
-      transform: "translateX(1%)",
+      position: 'absolute',
+      display: 'block',
+      width: '98%',
+      transform: 'translateX(1%)',
       borderBottom: `1px solid black`,
     },
   },

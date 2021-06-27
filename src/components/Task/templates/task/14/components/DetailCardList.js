@@ -1,7 +1,7 @@
-import React from "react";
-import clsx from "clsx";
+import React from 'react';
+import clsx from 'clsx';
 
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 
 const DetailCardList = ({ data }) => {
   const classes = useStyles(data);
@@ -13,8 +13,7 @@ const DetailCardList = ({ data }) => {
         <h3
           className={clsx(classes.subtitle, {
             [classes.subtitleEnd]: subtitleEnd,
-          })}
-        >
+          })}>
           {subtitle}
         </h3>
       )}
@@ -43,8 +42,7 @@ const DetailCardList = ({ data }) => {
             <p
               className={clsx(classes.textPrimaty, {
                 [classes.primaryEnd]: primaryEnd,
-              })}
-            >
+              })}>
               {textPrimary}
             </p>
           );
@@ -59,8 +57,7 @@ const DetailCardList = ({ data }) => {
                 className={clsx(classes.itemKey, {
                   [classes.textEnd]: textEnd,
                   [classes[variantKeyValue]]: variantKeyValue,
-                })}
-              >
+                })}>
                 {key}:
               </span>
               <span
@@ -68,8 +65,7 @@ const DetailCardList = ({ data }) => {
                   [classes[color]]: color,
                   [classes.textEnd]: textEnd,
                   [classes[variantKeyValue]]: variantKeyValue,
-                })}
-              >
+                })}>
                 {Icon && <Icon className={classes.itemValueIcon} />}
                 {value}
               </span>
@@ -92,7 +88,7 @@ const DetailCardList = ({ data }) => {
 const useStyles = makeStyles((theme) => ({
   list: {
     // width: "100%",
-    listStyle: "none",
+    listStyle: 'none',
   },
   item: {
     marginBottom: theme.spacing(1),
@@ -109,20 +105,20 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.body1,
   },
   textKeyValue: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   itemKey: {
     ...theme.typography.h4,
-    display: "flex",
-    alignItems: "center",
-    width: "50%",
+    display: 'flex',
+    alignItems: 'center',
+    width: '50%',
   },
   itemValue: {
     ...theme.typography.h4,
-    display: "flex",
-    alignItems: "center",
-    width: "50%",
+    display: 'flex',
+    alignItems: 'center',
+    width: '50%',
   },
   itemValueIcon: {
     marginRight: theme.spacing(2),
@@ -140,13 +136,13 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.body1,
   },
   textEnd: {
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
   primaryEnd: {
-    textAlign: "end",
+    textAlign: 'end',
   },
   subtitleEnd: {
-    textAlign: "end",
+    textAlign: 'end',
   },
 }));
 

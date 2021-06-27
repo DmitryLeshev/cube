@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Button,
@@ -8,10 +8,10 @@ import {
   ListItemAvatar,
   ListItemText,
   makeStyles,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import DeviceIcon from "@src/assets/utils/DeviceIcon";
-import EntryIcon from "@src/components/EntryPoint/components/EntryIcon";
+import DeviceIcon from '@src/assets/utils/DeviceIcon';
+import EntryIcon from '@src/components/EntryPoint/components/EntryIcon';
 
 const EditChecksItem = ({
   id,
@@ -28,36 +28,24 @@ const EditChecksItem = ({
   const classes = useStyles({ id });
 
   const Input = (
-    <FormControl
-      fullWidth
-      className={classes.fild}
-      variant="outlined"
-      size="small"
-    >
-      <OutlinedInput
-        type="number"
-        value={value}
-        onChange={changeValues}
-        name={`${id}`}
-      />
+    <FormControl fullWidth className={classes.fild} variant="outlined" size="small">
+      <OutlinedInput type="number" value={value} onChange={changeValues} name={`${id}`} />
     </FormControl>
   );
 
   const Icon = () => {
-    if (iconType === "devices") {
+    if (iconType === 'devices') {
       return <DeviceIcon className={classes.icon} type={type} />;
     }
     return (
       <span className={classes.icon}>
-        <EntryIcon type={iconType} style={{ fill: "#000" }} />
+        <EntryIcon type={iconType} style={{ fill: '#000' }} />
       </span>
     );
   };
 
   const IconV2 = (
-    <ListItemAvatar>
-      {id !== "defaultValue" ? <Icon /> : <Icon />}
-    </ListItemAvatar>
+    <ListItemAvatar>{id !== 'defaultValue' ? <Icon /> : <Icon />}</ListItemAvatar>
   );
 
   return (
@@ -65,11 +53,11 @@ const EditChecksItem = ({
       {IconV2}
       <ListItemText
         className={classes.text}
-        primary={primary || "primary primary"}
+        primary={primary || 'primary primary'}
         secondary={secondary || null}
       />
       {Input}
-      {dataType !== "sel-3" && (
+      {dataType !== 'sel-3' && (
         <Button className={classes.btn} onClick={() => action(id)}>
           {btnText}
         </Button>
@@ -80,7 +68,7 @@ const EditChecksItem = ({
 
 const useStyles = makeStyles((theme) => ({
   text: ({ id, v }) => ({
-    minWidth: id !== "defaultValue" && v === 1 ? 200 : 256,
+    minWidth: id !== 'defaultValue' && v === 1 ? 200 : 256,
     marginRight: theme.spacing(3),
   }),
   fild: {
@@ -93,9 +81,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1.5, 0),
   },
   icon: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 40,
     height: 40,
     padding: theme.spacing(1),

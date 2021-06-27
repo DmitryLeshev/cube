@@ -1,11 +1,10 @@
-import React from "react";
-import query from "@assets/utils/query";
-import { Button, makeStyles, TextField, Typography } from "@material-ui/core";
-import { useCustomInput } from "../../../assets/hooks";
+import React from 'react';
+import query from '@assets/utils/query';
+import { Button, makeStyles, TextField, Typography } from '@material-ui/core';
+import { useCustomInput } from '../../../assets/hooks';
 
 const EditLogins = React.forwardRef((props, ref) => {
-  const { apID, loginsString, refreshData, closeModal, defaultLogins, list } =
-    props;
+  const { apID, loginsString, refreshData, closeModal, defaultLogins, list } = props;
   const classes = useStyles();
   const logins = useCustomInput(loginsString);
 
@@ -28,7 +27,7 @@ const EditLogins = React.forwardRef((props, ref) => {
           <Button
             className={classes.btn}
             onClick={() => {
-              query("device/setLogins", {
+              query('device/setLogins', {
                 apID,
                 logins: logins.value,
               })
@@ -41,8 +40,7 @@ const EditLogins = React.forwardRef((props, ref) => {
                 });
             }}
             variant="contained"
-            color="primary"
-          >
+            color="primary">
             Сохранить
           </Button>
         </>
@@ -59,8 +57,8 @@ const EditLogins = React.forwardRef((props, ref) => {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
     padding: theme.spacing(3),
     minWidth: 400,
     backgroundColor: theme.palette.background.paper,
@@ -70,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   btn: {
-    marginLeft: "auto",
+    marginLeft: 'auto',
   },
 }));
 
