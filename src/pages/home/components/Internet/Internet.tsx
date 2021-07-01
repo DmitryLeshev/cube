@@ -129,8 +129,9 @@ const useStyles = makeStyles((theme: ITheme) =>
         "gr gr gr gr"
         "mr mr mr mr"
       `,
+      gridArea: 'int',
       gridAutoRows: 'min-content',
-      gridColumn: '1/3',
+      // gridColumn: '1/2',
       padding: theme.spacing(3, 0, 0),
       backgroundColor: theme.palette.background.paper,
       boxShadow: theme.shadows[3],

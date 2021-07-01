@@ -8,8 +8,10 @@ import useSnackbar from './useSnackbar';
 import useTypedSelector from './useTypedSelector';
 import useModal from './useModal';
 import useTabs from './useTabs';
+import useSelect from './useSelect';
 
 export {
+  useSelect,
   useTabs,
   useActions,
   useArray,

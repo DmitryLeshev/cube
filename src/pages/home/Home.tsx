@@ -22,11 +22,11 @@ export default memo(function Home({ route }: Props) {
     <Page title={t('home:page')}>
       <ScrollableContentiner>
         <div className={classes.temlate}>
-          <Tasks data={{}} />
-          <TopTasks isIncident={false} tasks={[]} />
-          <TopTasks isIncident={true} tasks={[]} />
           <Internet />
           <Network />
+          {/* <Tasks data={{}} /> */}
+          <TopTasks isIncident={false} tasks={[]} />
+          <TopTasks isIncident={true} tasks={[]} />
           <Ports />
         </div>
       </ScrollableContentiner>
@@ -42,6 +42,11 @@ const useStyles = makeStyles((theme: ITheme) =>
       display: 'grid',
       gridGap: theme.spacing(3),
       padding: theme.spacing(1.5, 5),
+      gridTemplateAreas: `
+        "int int net"
+        "task task prots"
+        "top top top"
+      `,
       gridTemplateColumns: '1fr 1fr',
       gridAutoRows: 'min-content',
     },

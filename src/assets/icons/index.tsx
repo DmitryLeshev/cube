@@ -16,8 +16,11 @@ import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import TvIcon from '@material-ui/icons/Tv';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import CreateIcon from '@material-ui/icons/Create';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 export {
+  RemoveIcon,
   MenuIcon,
   SettingsIcon,
   ExitToAppIcon,
@@ -33,6 +36,7 @@ export {
   TvIcon,
   CameraAltIcon,
   CreateIcon,
+  AddIcon,
 };
 
 export const IconSwords = (props: any) => {

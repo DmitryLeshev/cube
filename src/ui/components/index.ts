@@ -8,6 +8,7 @@ import Divider from './Divider';
 import List from './List';
 import ListItem from './ListItem';
 import ScrollableContentiner from './ScrollableContentiner';
+import Select from './Select';
 
 export {
   Datepicker,
@@ -20,4 +21,5 @@ export {
   Badge,
   Divider,
   ScrollableContentiner,
+  Select,
 };

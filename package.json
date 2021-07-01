@@ -7,7 +7,7 @@
     "serve": "vite preview",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
     "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
-    "lint": "yarn lint:format && yarn lint:fix ",
+    "lint": "",
     "type-check": "tsc"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "i18next": "^20.3.2",
     "i18next-browser-languagedetector": "^6.1.2",
     "i18next-http-backend": "^1.2.6",
+    "mobx-react": "^7.2.0",
     "notistack": "^1.0.9",
     "react": "^17.0.0",
     "react-color": "^2.19.3",

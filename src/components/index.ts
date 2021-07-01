@@ -13,6 +13,7 @@ import Tabs from './Tabs';
 import Tmpl from './Tmpl';
 import Tooltip from './Tooltip';
 import Topbar from './Topbar';
+import EditList from './EditList';
 
 export {
   Card,
@@ -31,4 +32,5 @@ export {
   Tmpl,
   Tooltip,
   Topbar,
+  EditList,
 };

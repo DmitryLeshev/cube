@@ -1,5 +1,7 @@
 import Update from './Update';
 import Reset from './Reset';
 import Reboot from './Reboot';
+import LoginPass from './LoginPass';
+import Connection from './Connection';
 
-export { Update, Reset, Reboot };
+export { Connection, Update, Reset, Reboot, LoginPass };

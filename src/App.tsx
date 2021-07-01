@@ -82,7 +82,7 @@ export default withAppContext(
       } else if (status === AppStatus.LOGGED) {
         if (location.pathname === '/' || location.pathname === '/auth') {
           console.log('home');
-          history.push('/home');
+          // history.push('/home');
         }
       }
     }

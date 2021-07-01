@@ -5,9 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { createStyles, makeStyles } from '@material-ui/core';
 
 import { Page } from '@/components';
+import { ScrollableContentiner } from '@/ui/components';
 import { ITheme } from '@/types/theme';
 
-import { Internet, Local, Wifi } from './components';
+import { Internet, Local, Wifi5, Wifi24 } from './components';
 
 interface Props {
   route: any;
@@ -18,11 +19,14 @@ export default memo(function Settings({ route }: Props) {
   const classes = useStyles();
   return (
     <Page title={t('settings:page')}>
-      <div className={classes.template}>
-        <Internet />
-        <Local />
-        <Wifi />
-      </div>
+      <ScrollableContentiner>
+        <div className={classes.template}>
+          <Internet />
+          <Local />
+          <Wifi5 />
+          <Wifi24 />
+        </div>
+      </ScrollableContentiner>
       {renderRoutes(route.routes)}
     </Page>
   );

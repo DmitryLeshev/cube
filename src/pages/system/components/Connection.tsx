@@ -1,28 +1,29 @@
 import React, { memo } from 'react';
 
-import { useModal } from '@/hooks';
+import { useModal, useInput } from '@/hooks';
 import { Card, Modal } from '@/components';
-import { Typography, Button } from '@/ui/components';
+import { Typography, Button, Input } from '@/ui/components';
 import { createStyles, makeStyles } from '@material-ui/core';
 import { ITheme } from '@/types/theme';
 import { useTranslation } from 'react-i18next';
 
 interface Props {}
 
-export default memo(function Wifi({}: Props) {
+export default memo(function Connection({}: Props) {
   const { t } = useTranslation();
   const usemodal = useModal();
-  const classes = useStyles();
 
-  const header = <Typography variant="h5">{t('settings:reboot-reset')}</Typography>;
+  const classes = useStyles();
+  const header = <Typography variant="h5">{t('system:connection')}</Typography>;
+
   const footer = (
     <Button className={classes.btn} onClick={usemodal.openModal}>
-      {t('settings:reboot')}
+      {t('system:connect')}
     </Button>
   );
   const modal = (
     <>
-      <Typography variant="h4">{t('settings:are-you-sure')}</Typography>
+      <Typography variant="h4">{t('system:are-you-sure')}</Typography>
       <div className={classes.actions}>
         <Button
           color="primary"
@@ -31,10 +32,10 @@ export default memo(function Wifi({}: Props) {
             usemodal.closeModal();
           }}
           fullWidth>
-          {t('settings:yes')}
+          {t('system:yes')}
         </Button>
         <Button color="primary" onClick={usemodal.closeModal} fullWidth>
-          {t('settings:no')}
+          {t('system:no')}
         </Button>
       </div>
     </>

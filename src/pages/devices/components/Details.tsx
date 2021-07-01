@@ -2,9 +2,9 @@ import React, { memo, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { useTranslation } from 'react-i18next';
-import clsx from 'clsx';
 
 import { createStyles, makeStyles } from '@material-ui/core';
+import clsx from 'clsx';
 
 import { DeviceIcon, Tabs } from '@/components';
 import { Typography } from '@/ui/components';
@@ -12,7 +12,6 @@ import { useTabs, useTypedSelector } from '@/hooks';
 import { ITheme } from '@/types/theme';
 
 import tabsConfig from './tabs.config';
-import { DeviceModel } from '@/models/device';
 import { useEffect } from 'react';
 import { ItemDevice } from '@/store/types/device';
 
@@ -27,25 +26,19 @@ export default memo(function Details({ route }: Props) {
   const { id } = match.params;
   const usetabs = useTabs();
 
-  const [device, setDevice] = useState<DeviceModel>();
-  const [details, setDetails] = useState<any>();
+  const [details, setDetails] = useState<ItemDevice>();
   const classes = useStyles();
 
   useEffect(() => {
     const selectedDevice: ItemDevice | any = list.find(
       (device) => device.id === Number(id),
     );
-    if (selectedDevice !== undefined) {
-      const device = new DeviceModel(selectedDevice);
-      setDevice(device);
-      const details = device?.getDetails();
-      setDetails(details);
-    }
+    setDetails(selectedDevice);
   }, [id]);
   return (
     <>
       <div className={classes.detail}>
-        <DeviceIcon className={classes.icon} type={details?.type} />
+        <DeviceIcon className={classes.icon} type={details?.type ?? 0} />
         <div className={classes.names}>
           <Typography className={classes.name} variant="h4">
             {details?.name}

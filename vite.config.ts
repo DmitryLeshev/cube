@@ -71,10 +71,6 @@ export default defineConfig({
         find: '@/contexts',
         replacement: path.resolve(__dirname, './src/contexts'),
       },
-      {
-        find: '@/models',
-        replacement: path.resolve(__dirname, './src/models'),
-      },
     ],
   },
 });

@@ -7,7 +7,7 @@ import { createStyles, makeStyles } from '@material-ui/core';
 import { Page } from '@/components';
 import { ITheme } from '@/types/theme';
 
-import { Reboot, Reset, Update } from './components';
+import { Reboot, Reset, Update, LoginPass, Connection } from './components';
 
 interface Props {
   route: any;
@@ -22,6 +22,8 @@ export default memo(function System({ route }: Props) {
         <Update />
         <Reboot />
         <Reset />
+        <LoginPass />
+        <Connection />
       </div>
       {renderRoutes(route.routes)}
     </Page>
@@ -38,6 +40,7 @@ const useStyles = makeStyles((theme: ITheme) =>
         "reboot reset"
       `,
       gap: theme.spacing(3),
+      alignItems: 'baseline',
     },
   }),
 );
