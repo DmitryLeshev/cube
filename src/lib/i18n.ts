@@ -18,6 +18,7 @@ const fileNames = [
   'users',
   'auth',
   'settings',
+  'system',
 ];
 
 i18n

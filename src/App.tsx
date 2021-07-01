@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useState } from 'react';
-import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
+import React, { memo, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
@@ -8,117 +8,123 @@ import { SnackbarProvider } from 'notistack';
 
 import { useActions, useTypedSelector } from './hooks';
 
-import { IContext } from './types/context';
-
 import useCustomTheme from './ui/theme';
-import { useTranslation } from 'react-i18next';
 
-import build from './api';
-import { auth } from './api/auth';
-
-export const { Consumer, Provider } = React.createContext<IContext>({
-  api: {},
-  auth: {},
-});
-
-interface Props {
-  routes: any[];
-}
-
-const appHandlers = new Map();
-Object.assign(window, { appHandlers, auth });
-
+// Временное решение
 enum AppStatus {
-  LOCAL_PATH = 'app.status',
+  LOCAL_PATH = 'application.status',
   AUTH = 'auth',
   LOGGED = 'logged',
   ACTIVATION = 'activation',
 }
-
+// Временное решение
 enum CubicStatus {
   AUTHORIZED = 'cubic-auth',
   NOT_AUTHORIZED = 'cubic-is-not-auth',
 }
-
+// Временное решение
+interface InitAppSubscriptionsDTO {
+  long: any[];
+  normal: any[];
+  short: any[];
+}
+// Временное решение
 export type Status = 'auth' | 'logged' | 'activation' | string | null;
 
-export default memo(function Application({ routes }: Props) {
-  const { colors, mode } = useTypedSelector((state) => state.app.theme);
-  const { deviceAddListAsync } = useActions();
-  const { i18n } = useTranslation();
-  const [api, setApi] = useState<any>();
+interface Props extends IAppContext {
+  routes: any[];
+}
 
-  const match = useRouteMatch();
-  const location = useLocation();
-  const history = useHistory();
+import { withAppContext } from '@/hocs';
+import { IAppContext } from '@/contexts/application';
+import { TypesLocalStorage } from './types';
 
-  const theme = useCustomTheme({
-    type: mode,
-    colors,
-  });
+export default withAppContext(
+  memo(function Application({ routes, application }: Props) {
+    const app = useTypedSelector((state) => state.app);
+    const {
+      deviceAddListAsync,
+      appChangeColors,
+      appChangeMode,
+      appChangeNavbar,
+      appChangeSettingbar,
+    } = useActions();
 
-  const subscrebeToInterface = (iface: any, cb: any) => {
-    const subscribers = appHandlers.get(iface) || [];
-    appHandlers.set(iface, [...subscribers, cb]);
-    return (cb: any) => {
-      const subscribers: any[] = appHandlers.get(iface);
-      appHandlers.set(
-        iface,
-        subscribers.filter((fn) => fn !== cb),
-      );
-    };
-  };
+    const location = useLocation();
+    const history = useHistory();
 
-  async function checkAuth() {
-    const { msg } = await auth.status();
-    if (msg === CubicStatus.AUTHORIZED) {
-      localStorage.setItem(AppStatus.LOCAL_PATH, AppStatus.LOGGED);
-    } else if (msg === CubicStatus.NOT_AUTHORIZED) {
-      localStorage.setItem(AppStatus.LOCAL_PATH, AppStatus.AUTH);
-    }
-    const status: Status = localStorage.getItem(AppStatus.LOCAL_PATH);
-    if (!status || status === AppStatus.AUTH) {
-      history.push('/auth');
-    } else if (status === AppStatus.LOGGED) {
-      if (location.pathname === '/' || location.pathname === '/auth')
-        history.push('/home');
-    }
-  }
-
-  useEffect(() => {
-    checkAuth();
-    subscrebeToInterface('auth', checkAuth);
-    subscrebeToInterface('device', deviceAddListAsync);
-    const interval = setInterval(() => {
-      if (appHandlers.size === 0) return;
-      const authHandlers = appHandlers.get('auth') ?? [];
-      const deviceHandlers = appHandlers.get('device') ?? [];
-      authHandlers.forEach((cb: any) => cb());
-      deviceHandlers.forEach((cb: any) => cb());
-    }, 5000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  useEffect(() => {
-    build().then(({ api, apiParams }: any) => {
-      Object.assign(window, { api, apiParams });
-      setApi(api);
-      deviceAddListAsync();
+    const theme = useCustomTheme({
+      type: app.theme.mode,
+      colors: app.theme.colors,
     });
-  }, []);
 
-  console.log('[render] App');
+    function changeNavbar(navbar: boolean) {
+      appChangeNavbar();
+      application?.ls.setItem(TypesLocalStorage.LocalStorageKeys.NAVBAR, !navbar);
+    }
 
-  return (
-    <Provider value={{ api, auth: { ...auth, checkAuth } }}>
+    function changeSettingsbar(settingbar: boolean) {
+      appChangeSettingbar();
+      application?.ls.setItem(TypesLocalStorage.LocalStorageKeys.SETTINGS, !settingbar);
+    }
+
+    // Временное решение
+    async function checkAuth() {
+      const { msg } = await application?.api.auth.status();
+      if (msg === CubicStatus.AUTHORIZED) {
+        localStorage.setItem(AppStatus.LOCAL_PATH, AppStatus.LOGGED);
+      } else if (msg === CubicStatus.NOT_AUTHORIZED) {
+        localStorage.setItem(AppStatus.LOCAL_PATH, AppStatus.AUTH);
+      }
+      const status: Status = localStorage.getItem(AppStatus.LOCAL_PATH);
+      if (!status || status === AppStatus.AUTH) {
+        history.push('/auth');
+      } else if (status === AppStatus.LOGGED) {
+        if (location.pathname === '/' || location.pathname === '/auth') {
+          console.log('home');
+          history.push('/home');
+        }
+      }
+    }
+
+    async function initTheme() {
+      let theme = JSON.parse(localStorage.getItem('setting.theme') ?? '');
+      if (!theme) theme = app.theme;
+      appChangeColors(theme.colors);
+      appChangeMode(theme.mode);
+    }
+
+    useEffect(() => {
+      Object.assign(application?.bars, { changeNavbar, changeSettingsbar });
+      Object.assign(application?.auth, { checkAuth });
+      checkAuth();
+      deviceAddListAsync();
+      initTheme();
+
+      const defaultSubs: InitAppSubscriptionsDTO = {
+        long: [checkAuth, deviceAddListAsync],
+        normal: [],
+        short: [],
+      };
+
+      Object.entries(defaultSubs).forEach(([type, subs]) => {
+        subs.forEach((sub: any) => application?.subs.subscribe(type, sub));
+      });
+      const intervals = application?.subs.initSubscriptions();
+      return () => {
+        intervals?.map((interval: any) => clearInterval(interval));
+      };
+    }, []);
+
+    useEffect(() => {}, []);
+
+    return (
       <ThemeProvider theme={theme}>
         <SnackbarProvider>
           <CssBaseline />
           {renderRoutes(routes)}
         </SnackbarProvider>
       </ThemeProvider>
-    </Provider>
-  );
-});
+    );
+  }),
+);

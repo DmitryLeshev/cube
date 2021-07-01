@@ -3,7 +3,7 @@ import { useParams, useRouteMatch } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
 import { Button, makeStyles, Backdrop, TextField, Typography } from '@material-ui/core';
-import { DateTimePicker } from '@material-ui/pickers';
+// import { DateTimePicker } from '@material-ui/pickers';
 import { useSnackbar } from 'notistack';
 
 import api from '../api';
@@ -162,7 +162,7 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }: any) =>
         open={showDatePicker}
         onClick={handlerBackdrop}>
         <div className={classes.backdropContainer}>
-          <DateTimePicker
+          {/* <DateTimePicker
             className={classes.marginBottom}
             openTo="month"
             views={['month', 'date', 'hours', 'minutes']}
@@ -174,7 +174,7 @@ const ActionCard = ({ closeTask, children, id, date, data, updateItem }: any) =>
             value={selectedDate}
             onChange={handlerDatePicker}
             ampm={false}
-          />
+          /> */}
           <Button
             className={classes.mb2}
             variant="outlined"

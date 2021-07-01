@@ -17,18 +17,18 @@ const ModesThemes = () => {
   return (
     <div className={classes.modesThemes}>
       <Typography className={classes.modesThemeTitle} variant="h5">
-        Режим темы
+        Тема
       </Typography>
 
       <div className={classes.switch}>
         <Typography className={classes.switchItem} variant="button">
-          Светлая тема
+          Светлая
         </Typography>
 
         <Switch checked={mode === 'light' ? false : true} onChange={onChange} />
 
         <Typography className={classes.switchItem} variant="button">
-          Тёмная тема
+          Тёмная
         </Typography>
       </div>
     </div>
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   switch: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-beetwen',
+    justifyContent: 'center',
   },
   switchItem: {
     textAlign: 'center',

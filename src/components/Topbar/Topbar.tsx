@@ -4,23 +4,31 @@ import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { AppBar, Toolbar, createStyles, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
-import { withContext } from '@/hocs';
+import { withAppContext } from '@/hocs';
 import { useActions, useTypedSelector } from '@/hooks';
 import { Typography, IconButton } from '@/ui/components';
 import { ExitToAppIcon, MenuIcon, SettingsIcon } from '@/assets/icons';
 import { ITheme } from '@/types/theme';
-import { IContext } from '@/types/context';
+import { IAppContext } from '@/contexts/application';
 
-interface Props extends IContext {}
+interface Props extends IAppContext {}
 
-export default withContext(
-  memo(function Topbar({ auth }: Props) {
-    const { navbar, name } = useTypedSelector((state) => state.app);
+export default withAppContext(
+  memo(function Topbar({ application }: Props) {
+    const { navbar, name, settingbar } = useTypedSelector((state) => state.app);
     const { appChangeSettingbar, appChangeNavbar } = useActions();
 
     const classes = useStyles();
     const match = useRouteMatch();
     const history = useHistory();
+
+    function changeNavbar() {
+      application?.bars?.changeNavbar(navbar);
+    }
+
+    function changeSettingsbar() {
+      application?.bars?.changeSettingsbar(settingbar);
+    }
 
     const isNotDashboard = match.url === '/auth' || match.url === '/activation';
     return (
@@ -32,7 +40,7 @@ export default withContext(
         position="relative">
         <Toolbar>
           {!isNotDashboard && (
-            <IconButton onClick={appChangeNavbar}>
+            <IconButton onClick={changeNavbar}>
               <MenuIcon className={classes.icon} />
             </IconButton>
           )}
@@ -41,14 +49,14 @@ export default withContext(
             {name}
           </Typography>
 
-          <IconButton className={classes.right} onClick={appChangeSettingbar}>
+          <IconButton className={classes.right} onClick={changeSettingsbar}>
             <SettingsIcon className={classes.icon} />
           </IconButton>
           {!isNotDashboard && (
             <IconButton
               onClick={async () => {
-                await auth.logout();
-                await auth.checkAuth();
+                await application?.auth?.logout();
+                await application?.auth?.checkAuth();
               }}>
               <ExitToAppIcon className={classes.icon} />
             </IconButton>

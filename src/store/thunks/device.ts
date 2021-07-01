@@ -5,6 +5,7 @@ import { RootState } from '../reducers';
 import { DeviceAction, ItemDevice } from '../types/device';
 
 import { isEquals } from '@/utils';
+import api from '@/api';
 
 const { deviceAddDetails, deviceAddList } = actions.device;
 
@@ -13,10 +14,6 @@ declare global {
     api: any;
   }
 }
-
-// enum Status {
-//   status
-// }
 
 interface Response<T> {
   status: boolean;
@@ -30,11 +27,11 @@ export const deviceAddListAsync = () => async (
   getState: () => RootState,
 ) => {
   const { list } = getState().device;
-  const res: Response<ItemDevice[]> = await window.api.device.list();
+  const res: Response<ItemDevice[]> = await api.device.list();
   const { data, msg, status } = res;
   if (list === data) return;
   if (isEquals(list, data)) return;
-  dispatch(deviceAddList(data));
+  dispatch(deviceAddList(data ?? []));
 };
 
 export const deviceAddDetailsAsync = () => async (

@@ -7,4 +7,6 @@
 // import { ITheme } from './theme';
 // import Tab from './tab';
 
-export {};
+import * as TypesLocalStorage from './localStorage';
+
+export { TypesLocalStorage };

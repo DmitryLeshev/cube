@@ -74,6 +74,12 @@ const navigationConfig = (state: RootState) => {
           href: '/settings',
           icon: SettingsIcon,
         },
+        {
+          i18nkey: 'system',
+          title: 'Система',
+          href: '/system',
+          icon: SettingsIcon,
+        },
       ],
     },
   ];

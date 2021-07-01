@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createStyles, makeStyles } from '@material-ui/core';
+import { createStyles, makeStyles, TextField } from '@material-ui/core';
 import clsx from 'clsx';
 
 import { ITheme } from '@/types/theme';
 import { useInput } from '@/hooks';
 
-import { Devices, Сriticality } from './components';
+import { Devices, Сriticality, Date } from './components';
 
 interface Props {
   className: any;
@@ -35,7 +35,7 @@ const Filter = ({ className }: Props) => {
   const device = useInput({ initialValue: 0 });
 
   const [criticality, setСriticality] = useState([0, 100]);
-  const [date, setDate] = useState([null, null]);
+  const [date, setDate] = useState([0, 0]);
 
   function handleСriticality(_event: any, value: any) {
     setСriticality(value);
@@ -43,12 +43,13 @@ const Filter = ({ className }: Props) => {
 
   const criticalityProps = { criticality, filter, handleСriticality };
   const deviceProps = { classes, device, filter, devices: [] };
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const dateProps = { classes, date, filter, setDate };
   return (
     <div className={clsx(classes.filter, className)}>
       <div className={classes.scroll}>
         <Devices {...deviceProps} />
         <Сriticality {...criticalityProps} />
+        <Date {...dateProps} />
       </div>
     </div>
   );

@@ -11,18 +11,18 @@ import {
 } from '@material-ui/core';
 
 import { Input, Button } from '@/ui/components';
-import { withContext } from '@/hocs';
+import { withAppContext } from '@/hocs';
+import { IAppContext } from '@/contexts/application';
 
 import { ITheme } from '@/types/theme';
-import { IContext } from '@/types/context';
 
-interface Props extends IContext {}
+interface Props extends IAppContext {}
 interface State {
   login: string;
   password: string;
 }
-export default withContext(
-  memo(function Auth({ auth }: Props) {
+export default withAppContext(
+  memo(function Auth({ application }: Props) {
     const { t } = useTranslation();
 
     const [state, setState] = useState<State>({ login: '', password: '' });
@@ -63,8 +63,8 @@ export default withContext(
             className={classes.btn}
             onClick={async () => {
               const { login, password } = state;
-              await auth.login({ login, password });
-              await auth.checkAuth();
+              await application?.auth?.login({ login, password });
+              await application?.auth?.checkAuth();
             }}>
             {t('auth:login-to')}
           </Button>

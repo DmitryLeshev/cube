@@ -15,7 +15,7 @@ import {
 } from '@/assets/icons';
 
 interface Props {
-  type: number | 'wifi-lock';
+  type: number;
   className?: any;
 }
 
@@ -30,7 +30,7 @@ const DeviceIcon = ({ type, className }: Props) => {
   if (type === 7) return <TvIcon className={className} />;
   if (type === 8) return <TvIcon className={className} />;
   if (type === 9) return <WifiIcon className={className} />;
-  if (type === 'wifi-lock') return <WifiLock className={className} />;
+  // if (type === 'wifi-lock') return <WifiLock className={className} />;
   if (type === 10) return <PhoneIphoneIcon className={className} />;
   return null;
 };

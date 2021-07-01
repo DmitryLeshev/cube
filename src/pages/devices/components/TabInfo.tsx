@@ -28,7 +28,6 @@ export default memo(function TabInfo({ route, className }: Props) {
         const list: { label: string }[] = t(`devices:info.${card}.list`, {
           returnObjects: true,
         });
-        console.log({ list, card });
         const items = Array.isArray(list)
           ? list.map((item, idx) => {
               return { key: item.label, value: String(idx + 1) };

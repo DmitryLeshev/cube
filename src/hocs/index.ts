@@ -1,3 +1,3 @@
-import { withContext } from './withContext';
+import { withAppContext } from './withAppContext';
 
-export { withContext };
+export { withAppContext };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { createMuiTheme } from '@material-ui/core';
 
@@ -11,7 +11,9 @@ interface Props {
 }
 
 export const useCustomTheme = (props: Props) => {
+  console.log('useCustomTheme', props);
   const { type, colors } = props;
+  useEffect(() => {}, [props]);
   const theme = React.useMemo(
     () =>
       createMuiTheme(
@@ -38,7 +40,7 @@ export const useCustomTheme = (props: Props) => {
           main: {},
         },
       ),
-    [props],
+    [type, colors],
   );
 
   return theme;

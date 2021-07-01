@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { renderRoutes, RouteConfig } from 'react-router-config';
 
 import { createStyles, makeStyles } from '@material-ui/core';
@@ -6,7 +6,6 @@ import clsx from 'clsx';
 
 import { useTypedSelector } from '@/hooks';
 import { Topbar, Navbar, Settingbar } from '@/components';
-import { ScrollableContentiner } from '@/ui/components';
 import { ITheme } from '@/types/theme';
 
 interface Props {
@@ -15,7 +14,14 @@ interface Props {
 
 export default memo(function Main({ route }: Props) {
   const classes = useStyles();
-  const { navbar } = useTypedSelector((state) => state.app);
+  const { navbar, settingbar } = useTypedSelector((state) => state.app);
+  const root = document.querySelector('#root');
+
+  useEffect(() => {
+    if (settingbar) root?.classList.add('blur');
+    else root?.classList.remove('blur');
+  }, [settingbar]);
+
   return (
     <>
       <Topbar />
@@ -39,6 +45,7 @@ const useStyles = makeStyles((theme: ITheme) =>
       marginLeft: theme.drawer.closeWidth,
       background: theme.palette.background.default,
       transition: theme.drawer.transition,
+      // filter: 'blur(2px)',
     },
     mainShift: {
       width: `calc(100% - ${theme.drawer.openWidth}px)`,

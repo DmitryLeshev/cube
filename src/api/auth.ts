@@ -1,4 +1,6 @@
-import { fetchData } from '@/common/http-client';
+import { fetchData } from '@/utils';
+
+const fetchAuth = fetchData('auth');
 
 interface LoginDTO {
   login: string;
@@ -12,10 +14,9 @@ interface IApiAuth {
 }
 
 const auth: IApiAuth = {
-  login: async ({ login, password }) =>
-    await fetchData({ 'auth/login': { login, password } }),
-  logout: async () => await fetchData({ 'auth/logout': {} }),
-  status: async () => await fetchData({ 'auth/status': {} }),
+  login: async ({ login, password }) => await fetchAuth({ login: { login, password } }),
+  logout: async () => await fetchAuth({ logout: {} }),
+  status: async () => await fetchAuth({ status: {} }),
 };
 
 export { auth };

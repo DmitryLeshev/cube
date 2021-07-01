@@ -3,16 +3,20 @@ import { useSnackbar } from 'notistack';
 
 import { makeStyles, Typography } from '@material-ui/core';
 
-import { HuePicker } from 'react-color';
+import { HuePicker, GithubPicker } from 'react-color';
 
 import { useActions, useDebounce, useColorPicker, useTypedSelector } from '@/hooks';
 
 function setThemeToLocalStorage(theme: any) {
-  localStorage.setItem('theme', JSON.stringify(theme));
+  localStorage.setItem('setting.theme', JSON.stringify(theme));
 }
 
 function getThemeToLocalStorage() {
-  return JSON.parse(localStorage.getItem('theme') ?? '');
+  try {
+    return JSON.parse(localStorage.getItem('setting.theme') ?? '');
+  } catch (error) {
+    return { colors: { primary: null, secondary: null } };
+  }
 }
 
 const PaletteColors = () => {
@@ -44,27 +48,18 @@ const PaletteColors = () => {
     theme.colors[value] = color.hex;
     setThemeToLocalStorage(theme);
     value === 'primary' ? primary.changeColor(color) : secondary.changeColor(color);
-    debouncedChangeColors();
+    appChangeColors({ primary: theme.colors.primary, secondary: theme.colors.secondary });
   };
 
   return (
     <div className={classes.container}>
-      <Typography>Основной</Typography>
-      <div className={classes.picker}>
-        <HuePicker
-          color={primary.color}
-          onChange={(e) => onChangeComplete(e, 'primary')}
-          width={'100%'}
-        />
-      </div>
-      <Typography>Вторичный</Typography>
-      <div className={classes.picker}>
-        <HuePicker
-          color={secondary.color}
-          onChange={(e) => onChangeComplete(e, 'secondary')}
-          width={'100%'}
-        />
-      </div>
+      <Typography variant="h5" paragraph>
+        Цвет
+      </Typography>
+      <GithubPicker
+        className={classes.picker}
+        onChangeComplete={(color) => onChangeComplete(color, 'primary')}
+      />
     </div>
   );
 };
@@ -76,14 +71,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: theme.spacing(3, 0),
   },
-  formControl: {
-    marginBottom: theme.spacing(2),
-  },
-  picker: {
-    width: '100%',
-    borderRadius: 10,
-    overflow: 'hidden',
-  },
+  picker: { minWidth: 212 },
 }));
 
 export default PaletteColors;

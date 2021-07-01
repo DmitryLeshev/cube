@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { useTranslation } from 'react-i18next';
@@ -8,35 +8,57 @@ import { createStyles, makeStyles } from '@material-ui/core';
 
 import { DeviceIcon, Tabs } from '@/components';
 import { Typography } from '@/ui/components';
-import { useTabs } from '@/hooks';
+import { useTabs, useTypedSelector } from '@/hooks';
 import { ITheme } from '@/types/theme';
 
 import tabsConfig from './tabs.config';
+import { DeviceModel } from '@/models/device';
+import { useEffect } from 'react';
+import { ItemDevice } from '@/store/types/device';
 
 interface Props {
   route: any;
 }
 
 export default memo(function Details({ route }: Props) {
+  const { list } = useTypedSelector((state) => state.device);
   const { t } = useTranslation();
   const match = useRouteMatch<{ id: string }>();
+  const { id } = match.params;
   const usetabs = useTabs();
+
+  const [device, setDevice] = useState<DeviceModel>();
+  const [details, setDetails] = useState<any>();
   const classes = useStyles();
+
+  useEffect(() => {
+    const selectedDevice: ItemDevice | any = list.find(
+      (device) => device.id === Number(id),
+    );
+    if (selectedDevice !== undefined) {
+      const device = new DeviceModel(selectedDevice);
+      setDevice(device);
+      const details = device?.getDetails();
+      setDetails(details);
+    }
+  }, [id]);
   return (
     <>
       <div className={classes.detail}>
-        <DeviceIcon className={classes.icon} type={1} />
+        <DeviceIcon className={classes.icon} type={details?.type} />
         <div className={classes.names}>
           <Typography className={classes.name} variant="h4">
-            {'name'}
+            {details?.name}
           </Typography>
           <Typography className={classes.ip} variant="body1">
-            {'last name'}
+            {details?.ip}
           </Typography>
         </div>
-        <Typography className={classes.status}>
-          {t('devices:header.agentIsRunning')}
-        </Typography>
+        {details?.agent && (
+          <Typography className={classes.status}>
+            {t('devices:header.agentIsRunning')}
+          </Typography>
+        )}
         <Tabs
           className={classes.tabs}
           {...usetabs}

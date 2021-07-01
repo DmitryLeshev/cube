@@ -123,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
   },
   itemKey: {
     ...theme.typography.body1,
+    margin: 0,
     display: 'block',
     minWidth: 150,
   },

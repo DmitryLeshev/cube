@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 interface Props {}
 
-export default memo(function Reboot({}: Props) {
+export default memo(function Internet({}: Props) {
   const { t } = useTranslation();
   const usemodal = useModal();
   const classes = useStyles();

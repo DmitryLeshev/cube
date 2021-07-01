@@ -147,12 +147,12 @@ export default memo(function Update({}: Props) {
 
   const header = (
     <Typography variant="h5">
-      {t('settings:version-system')}: {version}
+      {t('system:version-system')}: {version}
     </Typography>
   );
   const footer = (
     <Typography variant="body1" color="textSecondary">
-      {t('settings:renewal')} {update}
+      {t('system:renewal')} {update}
     </Typography>
   );
 

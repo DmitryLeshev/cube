@@ -1,4 +1,5 @@
 import Typography from './Typography';
+import Datepicker from './Datepicker';
 import IconButton from './IconButton';
 import Input from './Input';
 import Button from './Button';
@@ -9,6 +10,7 @@ import ListItem from './ListItem';
 import ScrollableContentiner from './ScrollableContentiner';
 
 export {
+  Datepicker,
   List,
   ListItem,
   Typography,

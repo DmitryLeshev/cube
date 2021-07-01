@@ -7,7 +7,7 @@ import { createStyles, makeStyles } from '@material-ui/core';
 import { Page } from '@/components';
 import { ITheme } from '@/types/theme';
 
-import { Reboot, Reset, Update } from './components';
+import { Internet, Local, Wifi } from './components';
 
 interface Props {
   route: any;
@@ -19,9 +19,9 @@ export default memo(function Settings({ route }: Props) {
   return (
     <Page title={t('settings:page')}>
       <div className={classes.template}>
-        <Update />
-        <Reboot />
-        <Reset />
+        <Internet />
+        <Local />
+        <Wifi />
       </div>
       {renderRoutes(route.routes)}
     </Page>

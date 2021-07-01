@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme: ITheme) =>
       flexDirection: 'column',
       backgroundColor: theme.palette.background.paper,
       boxShadow: theme.shadows[3],
+      borderRadius: theme.spacing(0.5),
     }),
     header: {
       display: 'flex',
@@ -60,7 +61,8 @@ const useStyles = makeStyles((theme: ITheme) =>
     footer: {
       display: 'flex',
       padding: theme.spacing(1, 2),
-      background: theme.palette.background.default,
+      background: theme.palette.background.paper,
+      borderRadius: theme.spacing(0.5),
     },
   }),
 );

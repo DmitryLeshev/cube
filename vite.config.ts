@@ -56,10 +56,6 @@ export default defineConfig({
         replacement: path.resolve(__dirname, './src/pages'),
       },
       {
-        find: '@/common',
-        replacement: path.resolve(__dirname, './src/common'),
-      },
-      {
         find: '@/api',
         replacement: path.resolve(__dirname, './src/api'),
       },
@@ -70,6 +66,14 @@ export default defineConfig({
       {
         find: '@/store',
         replacement: path.resolve(__dirname, './src/store'),
+      },
+      {
+        find: '@/contexts',
+        replacement: path.resolve(__dirname, './src/contexts'),
+      },
+      {
+        find: '@/models',
+        replacement: path.resolve(__dirname, './src/models'),
       },
     ],
   },

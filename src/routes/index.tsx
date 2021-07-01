@@ -1,3 +1,6 @@
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+
 import { Activation, Auth, Error, Main } from '../layouts';
 import activation from './activation';
 import auth from './auth';
@@ -11,6 +14,7 @@ import reports from './reports';
 import settings from './settings';
 import support from './support';
 import users from './users';
+import system from './system';
 
 const routes: any = [
   {
@@ -41,6 +45,7 @@ const routes: any = [
       support,
       events,
       users,
+      system,
       redirect404,
     ],
   },

@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
   }),
   responsible: ({ windowCard }: any) => ({
     minWidth: windowCard ? 100 : 150,
-    fontWeight: 500,
   }),
   list: {
     display: 'flex',
@@ -109,6 +108,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   link: {
+    ...theme.typography.body2,
     marginRight: theme.spacing(3),
     color: theme.palette.text.primary,
   },

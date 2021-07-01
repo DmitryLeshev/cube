@@ -94,14 +94,15 @@
     "devices": "Устройства",
     "dictionaries": "Словари",
     "home": "Главная",
-    "incident": "Инциденты",
+    "incident": "События",
     "reports": "Отчеты",
     "settings": "Настройки",
     "support": "Тех поддержка",
-    "tasks": "Задачи",
+    "tasks": "Уязвимости",
     "tools": "Инструменты",
     "users": "Пользователи",
-    "vulndb": "База уязвимостей"
+    "vulndb": "База уязвимостей",
+    "system": "Система"
   },
   "snackbar": {
     "add-host-successful": "Host успешно добавлен в белый список",

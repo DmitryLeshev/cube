@@ -4,7 +4,7 @@ declare var process: {
   };
 };
 
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -19,104 +19,108 @@ import {
 import LanguageIcon from '@material-ui/icons/Language';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-// import { ContentsTitle, PaletteColors, ModesThemes } from './components';
+import { ContentsTitle, PaletteColors, ModesThemes } from './components';
+import { Divider } from '@/ui/components';
 
 import { useTypedSelector, useActions } from '@/hooks';
 import { ITheme } from '@/types/theme';
 import { Lang } from '@/types/languages';
+import { IAppContext } from '@/contexts/application';
+import { withAppContext } from '@/hocs';
 
-interface Props {}
+interface Props extends IAppContext {}
 
-export default memo(function Settingbar({}: Props) {
-  const { settingbar, lang } = useTypedSelector((state) => state.app);
-  const { appChangeSettingbar, appChangeLang } = useActions();
-  const { i18n } = useTranslation();
-  const classes = useStyles();
+export default withAppContext(
+  memo(function Settingbar({ application }: Props) {
+    const { settingbar, lang } = useTypedSelector((state) => state.app);
+    const { appChangeLang } = useActions();
+    const { i18n } = useTranslation();
+    const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = useState<any>(null);
+    const [anchorEl, setAnchorEl] = useState<any>(null);
 
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
+    const handleClick = (event: any) => {
+      setAnchorEl(event.currentTarget);
+    };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
 
-  const changeLanguage = (language: Lang) => {
-    appChangeLang(language);
-    localStorage.setItem('app.lang', language);
-    i18n.changeLanguage(language);
-  };
+    const changeLanguage = (language: Lang) => {
+      appChangeLang(language);
+      i18n.changeLanguage(language);
+    };
 
-  useEffect(() => {
-    const lang: any = localStorage.getItem('app.lang');
-    appChangeLang(lang ?? 'ru');
-  }, []);
+    function changeSettingsbar() {
+      application?.bars?.changeSettingsbar(settingbar);
+    }
 
-  return (
-    <Drawer anchor={'right'} open={settingbar} onClose={appChangeSettingbar}>
-      <div className={classes.settingbar}>
-        {/* <ContentsTitle /> */}
+    return (
+      <Drawer
+        className={classes.drawer}
+        anchor={'right'}
+        open={settingbar}
+        onClose={changeSettingsbar}>
+        <div className={classes.settingbar}>
+          <ContentsTitle />
 
-        {/* <Divider /> */}
+          <Divider />
 
-        {/* <ModesThemes
-          darkModeChange={() => console.log('darkModeChange')}
-          darkMode={true}
-        /> */}
-        {/* <Divider /> */}
+          <ModesThemes />
+          <Divider />
 
-        {/* <PaletteColors switchTheme={() => console.log('switchTheme')} /> */}
+          <PaletteColors />
 
-        {/* <Divider /> */}
-        <div className={classes.language}>
-          <ButtonGroup variant="outlined">
-            <Button className={classes.btn}>
-              <LanguageIcon />
-              {lang.toUpperCase()}
-            </Button>
-            <Button
-              aria-controls="simple-menu"
-              aria-haspopup="true"
-              onClick={handleClick}>
-              <ArrowDropDownIcon />
-            </Button>
-          </ButtonGroup>
+          <Divider />
+          <div className={classes.language}>
+            <ButtonGroup variant="outlined">
+              <Button className={classes.btn}>
+                <LanguageIcon />
+                {lang.toUpperCase()}
+              </Button>
+              <Button
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}>
+                <ArrowDropDownIcon />
+              </Button>
+            </ButtonGroup>
 
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}>
-            <MenuItem
-              onClick={() => {
-                changeLanguage('en');
-                handleClose();
-              }}>
-              EN
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                changeLanguage('ru');
-                handleClose();
-              }}>
-              RU
-            </MenuItem>
-          </Menu>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}>
+              <MenuItem
+                onClick={() => {
+                  changeLanguage('en');
+                  handleClose();
+                }}>
+                EN
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  changeLanguage('ru');
+                  handleClose();
+                }}>
+                RU
+              </MenuItem>
+            </Menu>
+          </div>
         </div>
-      </div>
-    </Drawer>
-  );
-});
+      </Drawer>
+    );
+  }),
+);
 
 const useStyles = makeStyles((theme: ITheme) =>
   createStyles({
     settingbar: {
       display: 'flex',
       flexDirection: 'column',
-      width: theme.drawer.openWidth,
+      width: theme.drawer.openWidth + 100,
       height: '100%',
       marginBottom: theme.spacing(3),
       padding: theme.spacing(2),
@@ -139,5 +143,6 @@ const useStyles = makeStyles((theme: ITheme) =>
       },
     },
     btn: { alignItems: 'center', justifyContent: 'center' },
+    drawer: {},
   }),
 );

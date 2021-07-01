@@ -99,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonBackIcon: {},
   detailsTitle: () => ({
+    ...theme.typography.h5,
     display: 'flex',
     marginRight: theme.spacing(3),
   }),

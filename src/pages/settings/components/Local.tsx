@@ -9,15 +9,15 @@ import { useTranslation } from 'react-i18next';
 
 interface Props {}
 
-export default memo(function Reset({}: Props) {
+export default memo(function Local({}: Props) {
   const { t } = useTranslation();
   const usemodal = useModal();
   const classes = useStyles();
 
-  const header = <Typography variant="h5">{t('settings:system-reset')}</Typography>;
+  const header = <Typography variant="h5">{t('settings:reboot-reset')}</Typography>;
   const footer = (
     <Button className={classes.btn} onClick={usemodal.openModal}>
-      {t('settings:reset')}
+      {t('settings:reboot')}
     </Button>
   );
   const modal = (
@@ -27,7 +27,7 @@ export default memo(function Reset({}: Props) {
         <Button
           color="primary"
           onClick={() => {
-            console.log('reset');
+            console.log('reboot');
             usemodal.closeModal();
           }}
           fullWidth>
@@ -49,7 +49,7 @@ export default memo(function Reset({}: Props) {
 
 const useStyles = makeStyles((theme: ITheme) =>
   createStyles({
-    card: { gridArea: 'reset' },
+    card: { gridArea: 'reboot' },
     btn: { marginLeft: 'auto' },
     actions: {
       display: 'flex',

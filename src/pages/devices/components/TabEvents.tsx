@@ -3,7 +3,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { createStyles, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
-import { fetchMockData } from '@/common/mock-client';
+import { fetchData } from '@/utils';
 import { Table } from '@/components';
 import { ITheme } from '@/types/theme';
 
@@ -25,7 +25,9 @@ interface Props {
 export default memo(function TabEvents({ className }: Props) {
   const [tasks, setTasks] = useState<ITask[]>([]);
   useEffect(() => {
-    fetchMockData('user/getDeviceTasks').then((res) => setTasks(res.msg));
+    fetchData('user')({ getDeviceTasks: { mock: true } }).then((res) =>
+      setTasks(res.msg),
+    );
   }, []);
 
   const columns = [

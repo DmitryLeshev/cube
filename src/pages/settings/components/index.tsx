@@ -1,5 +1,5 @@
-import Update from './Update';
-import Reset from './Reset';
-import Reboot from './Reboot';
+import Internet from './Internet';
+import Wifi from './Wifi';
+import Local from './Local';
 
-export { Update, Reset, Reboot };
+export { Internet, Local, Wifi };

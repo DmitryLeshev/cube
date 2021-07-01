@@ -1,25 +1,29 @@
-import { fetchData } from '@/common/http-client';
+import { auth } from './auth';
+import { device } from './device';
+import { setting } from './setting';
 
-const build = async () => {
-  const { data } = await fetchData({ 'project/map': null });
-  const api: any = {};
-  const apiParams: any = {};
-  Object.entries(data).forEach(([interfaceName, methods]: any) => {
-    interfaceName = interfaceName[0].toLowerCase() + interfaceName.slice(1);
-    api[interfaceName] = {};
-    apiParams[interfaceName] = {};
-    Object.entries(methods).forEach(([methodName, params]: any) => {
-      const path = `${interfaceName + '/' + methodName}`;
-      const method = async (args: any) => await fetchData({ [path]: args });
-      api[interfaceName][methodName] = method;
-      apiParams[interfaceName][methodName] = params;
-    });
-  });
-  console.log('[api] available methods', apiParams);
-  return { api, apiParams };
-};
+export default { auth, device, setting };
 
-export default build;
+// const build = async () => {
+//   const { data } = await fetchData({ 'project/map': null });
+//   const api: any = {};
+//   const apiParams: any = {};
+//   Object.entries(data).forEach(([interfaceName, methods]: any) => {
+//     interfaceName = interfaceName[0].toLowerCase() + interfaceName.slice(1);
+//     api[interfaceName] = {};
+//     apiParams[interfaceName] = {};
+//     Object.entries(methods).forEach(([methodName, params]: any) => {
+//       const path = `${interfaceName + '/' + methodName}`;
+//       const method = async (args: any) => await fetchData({ [path]: args });
+//       api[interfaceName][methodName] = method;
+//       apiParams[interfaceName][methodName] = params;
+//     });
+//   });
+//   console.log('[api] available methods', apiParams);
+//   return { api, apiParams };
+// };
+
+// export default build;
 
 // let api = {
 //   wizard: {

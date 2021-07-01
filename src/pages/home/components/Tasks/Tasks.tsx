@@ -51,12 +51,10 @@ export default ({ data }: any) => {
         return (
           <li key={el.id} className={clsx(classes.item, classes[bgColor])}>
             <RouterLink className={classes.link} to={el.url}>
-              <div className={classes.leftSideItem}>
-                <Icon />
-              </div>
-              <div className={classes.rightSideItem}>
-                <p className={classes.valueItem}>{el.value}</p>
-                <p className={classes.textItem}>
+              <Icon />
+              <div className={classes.wrapper}>
+                <p className={classes.count}>{el.value}</p>
+                <p className={classes.name}>
                   {t(`home:tasks.${el.label}`, { count: el.value })}
                 </p>
               </div>
@@ -69,6 +67,49 @@ export default ({ data }: any) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  list: {
+    display: 'grid',
+    gap: theme.spacing(2),
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    gridColumn: '1 / 3',
+  },
+  item: {
+    display: 'flex',
+    alignItems: 'center',
+    flexGrow: 1,
+    height: 200,
+    boxShadow: theme.shadows[3],
+    transition: '0.3s',
+    cursor: 'pointer',
+
+    '&:active': {
+      opacity: 0.2,
+    },
+  },
+  link: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexGrow: 1,
+    height: '100%',
+    textDecoration: 'none',
+  },
+  wrapper: { marginLeft: theme.spacing(2) },
+  name: {
+    ...theme.typography.h5,
+    margin: 0,
+    color: theme.palette.getContrastText('#000000'),
+  },
+  count: {
+    textAlign: 'center',
+    fontSize: theme.spacing(10),
+    lineHeight: 1,
+    margin: 0,
+    color: theme.palette.getContrastText('#000000'),
+  },
   error: {
     backgroundColor: theme.palette.error.light,
     '&:hover': {
@@ -96,90 +137,5 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.grey[600],
       boxShadow: theme.shadows[6],
     },
-  },
-  tasks: {
-    display: 'flex',
-    flexDirection: 'column',
-    // margin: theme.spacing(3, 3, 0),
-    flexGrow: 1,
-    padding: theme.spacing(3, 3, 0),
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[3],
-  },
-  title: {
-    marginBottom: theme.spacing(3),
-  },
-  list: {
-    display: 'grid',
-    gap: theme.spacing(2),
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-    gridColumn: '1 / 3',
-  },
-  item: {
-    display: 'flex',
-    alignItems: 'center',
-    flexGrow: 1,
-    height: 150,
-    boxShadow: theme.shadows[3],
-    transition: '0.3s',
-    cursor: 'pointer',
-
-    '&:active': {
-      opacity: 0.2,
-    },
-  },
-  link: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexGrow: 1,
-    height: '100%',
-    textDecoration: 'none',
-  },
-  icon: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '130px',
-    flexGrow: 1,
-  },
-  leftSideItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    // flexGrow: 1,
-    // width: "46%",
-    height: '100%',
-  },
-  rightSideItem: {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    // flexGrow: 1,
-    // width: "54%",
-    marginLeft: theme.spacing(3),
-    height: '100%',
-  },
-  textItem: {
-    ...theme.typography.h5,
-    position: 'relative',
-    top: 32,
-    textAlign: 'center',
-    color: theme.palette.getContrastText('#000000'),
-  },
-  valueItem: {
-    position: 'absolute',
-    top: 0,
-    fontSize: '88px',
-    margin: 0,
-    color: theme.palette.getContrastText('#000000'),
   },
 }));

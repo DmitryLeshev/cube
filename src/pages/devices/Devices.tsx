@@ -26,8 +26,6 @@ export default memo(function Devices({ route }: Props) {
     });
   }
 
-  console.log('[render] Devices');
-
   const classes = useStyles();
   return (
     <Page title={t('devices:page')}>

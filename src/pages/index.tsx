@@ -8,6 +8,7 @@ import Events from './events';
 import Home from './home';
 import Reports from './reports';
 import Settings from './settings';
+import System from './system';
 import Support from './support';
 import Users from './users';
 
@@ -22,6 +23,7 @@ export {
   Home,
   Reports,
   Settings,
+  System,
   Support,
   Users,
 };
