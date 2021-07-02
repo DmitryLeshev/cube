@@ -15,6 +15,6 @@ export default ({
     if (!event) return setValue('');
     setValue(event.target.value);
   }
-
+  if (!label) return { value, onChange, name };
   return { value, onChange, name, label };
 };

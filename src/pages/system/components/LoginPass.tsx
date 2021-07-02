@@ -19,8 +19,8 @@ export default memo(function LoginPass({}: Props) {
   const header = <Typography variant="h5">{t('system:login-pass')}</Typography>;
   const body = (
     <>
-      <Input className={classes.field} label={t('system:login')} {...login} />
-      <Input label={t('system:password')} {...password} />
+      <Input {...login} className={classes.field} label={t('system:login')} />
+      <Input {...password} label={t('system:password')} />
     </>
   );
   const footer = (

@@ -59,8 +59,12 @@ interface Props {}
 export default memo(function Wifi5({}: Props) {
   const { t } = useTranslation();
   const usemodal = useModal();
-  const essid = useInput({ initialValue: '', name: 'essid' });
-  const password = useInput({ initialValue: '', name: 'passwd' });
+  const essid = useInput({ initialValue: '', name: 'essid', label: t('settings:essid') });
+  const password = useInput({
+    initialValue: '',
+    name: 'passwd',
+    label: t('settings:password'),
+  });
   const width = useSelect({
     items: [
       { value: 20, label: '20 Mhz' },
@@ -83,8 +87,8 @@ export default memo(function Wifi5({}: Props) {
   const header = <Typography variant="h5">{t('settings:wifi-5')}</Typography>;
   const body = (
     <>
-      <Input className={classes.field} label={t('settings:essid')} {...essid} />
-      <Input className={classes.field} label={t('settings:password')} {...password} />
+      <Input className={classes.field} {...essid} />
+      <Input className={classes.field} {...password} />
       <Select className={classes.field} {...canal5} />
       <Select className={classes.field} {...width} />
     </>

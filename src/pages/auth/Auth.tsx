@@ -29,6 +29,7 @@ export default withAppContext(
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.currentTarget;
+      console.log({ name, value });
       setState((prev) => {
         return { ...prev, [name]: value };
       });

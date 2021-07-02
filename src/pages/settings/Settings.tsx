@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme: ITheme) =>
         "reboot reset"
       `,
       gap: theme.spacing(3),
+      alignItems: 'baseline',
     },
   }),
 );

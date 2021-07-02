@@ -37,8 +37,8 @@ export default memo(function Wifi24({}: Props) {
   const header = <Typography variant="h5">{t('settings:wifi-2.4')}</Typography>;
   const body = (
     <>
-      <Input className={classes.field} label={t('settings:essid')} {...essid} />
-      <Input className={classes.field} label={t('settings:password')} {...password} />
+      <Input className={classes.field} {...essid} label={t('settings:essid')} />
+      <Input className={classes.field} {...password} label={t('settings:password')} />
       <Select className={classes.field} {...canal24} />
       <Select className={classes.field} {...width} />
     </>

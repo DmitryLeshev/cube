@@ -30,12 +30,8 @@ i18n
     debug: false,
     whitelist: languages,
     ns: fileNames,
-    react: {
-      useSuspense: true,
-    },
-    backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
-    },
+    react: { useSuspense: true },
+    backend: { loadPath: '/locales/{{lng}}/{{ns}}.json' },
   });
 
 export default i18n;

@@ -1,23 +1,76 @@
-import React, { memo } from 'react';
-
-import { useModal } from '@/hooks';
-import { Card, Modal } from '@/components';
-import { Typography, Button } from '@/ui/components';
-import { createStyles, makeStyles } from '@material-ui/core';
-import { ITheme } from '@/types/theme';
+import React, { ChangeEvent, memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { createStyles, makeStyles } from '@material-ui/core';
+
+import { useModal, useSelect, useInput } from '@/hooks';
+import { Card, Modal, EditList } from '@/components';
+import { Typography, Input, Button, Select } from '@/ui/components';
+
+import { ITheme } from '@/types/theme';
 
 interface Props {}
 
-export default memo(function Local({}: Props) {
+const protocols = [
+  'DHCP client',
+  'DHCPv6 client',
+  'Unmanaged',
+  'PPPoE',
+  'Static address',
+];
+
+export default memo(function Internet({}: Props) {
   const { t } = useTranslation();
   const usemodal = useModal();
-  const classes = useStyles();
 
-  const header = <Typography variant="h5">{t('settings:reboot-reset')}</Typography>;
+  // pppoe
+  const username = useInput({ initialValue: '', label: 'PAP/CHAP username' });
+  const password = useInput({ initialValue: '', label: 'PAP/CHAP password' });
+  const concentrator = useInput({ initialValue: '', label: 'Access Concentrator' });
+  const serviceName = useInput({ initialValue: '', label: 'Service Name' });
+
+  // staticAddress
+  const [inputs, setInputs] = useState<string[]>([]);
+  const gateway = useInput({ initialValue: '', label: 'IPv4 gateway' });
+  const broadcast = useInput({ initialValue: '', label: 'IPv4 broadcast' });
+
+  const protocol = useSelect({
+    items: protocols.map((protocol, idx) => {
+      return { label: protocol, value: idx };
+    }),
+    selectedValue: 0,
+    label: t('settings:protocol'),
+  });
+
+  const classes = useStyles();
+  const header = <Typography variant="h5">{t('settings:ahcp')}</Typography>;
+  const ahcp = (
+    <>
+      <Input className={classes.field} {...username} />
+      <Input className={classes.field} {...password} />
+      <Input placeholder="auto" helper="Leave empty to autodetect" {...concentrator} />
+      <Input placeholder="auto" helper="Leave empty to autodetect" {...serviceName} />
+    </>
+  );
+  const staticAddress = (
+    <>
+      <EditList inputs={inputs} setInputs={setInputs} />
+      <Input placeholder="192.168.1.1 (wan)" className={classes.field} {...gateway} />
+      <Input placeholder="192.168.2.255" className={classes.field} {...broadcast} />
+    </>
+  );
+  const body = (
+    <>
+      <Select className={classes.field} {...protocol} />
+      {protocols[protocol.value] === 'PPPoE'
+        ? ahcp
+        : protocols[protocol.value] === 'Static address' && staticAddress}
+    </>
+  );
+
   const footer = (
     <Button className={classes.btn} onClick={usemodal.openModal}>
-      {t('settings:reboot')}
+      {t('settings:save')}
     </Button>
   );
   const modal = (
@@ -41,7 +94,7 @@ export default memo(function Local({}: Props) {
   );
   return (
     <>
-      <Card header={header} footer={footer} />
+      <Card header={header} body={body} footer={footer} />
       <Modal {...usemodal} children={modal} />
     </>
   );
@@ -56,5 +109,6 @@ const useStyles = makeStyles((theme: ITheme) =>
       marginTop: theme.spacing(2),
       '& > button:last-child': { marginLeft: theme.spacing(2) },
     },
+    field: { marginBottom: theme.spacing(2) },
   }),
 );

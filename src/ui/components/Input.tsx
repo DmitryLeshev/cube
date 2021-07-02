@@ -33,6 +33,7 @@ export default function Input(props: Props): ReactElement {
         label={label}
         placeholder={placeholder}
         disabled={props.disabled}
+        name={props.name}
       />
       {helper && <FormHelperText>{helper}</FormHelperText>}
     </FormControl>
